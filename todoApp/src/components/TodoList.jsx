@@ -1,7 +1,7 @@
 import React from 'react';
 import TodoItem from './TodoItem.jsx';
 
-function todoList({ todos, deleteTodo }) {
+function TodoList({ todos, deleteTodo }) {
   return (
     <div className="flex items-center justify-center flex-col gap-1 text-xl">
       {todos.map((todo, index) => (
@@ -11,4 +11,4 @@ function todoList({ todos, deleteTodo }) {
   );
 }
 
-export default todoList;
+export default TodoList;

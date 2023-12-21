@@ -1,20 +1,20 @@
 import React from 'react';
 import { toast } from 'react-toastify';
 import { useEffect } from 'react';
-import TodoList from './todoList';
+import TodoList from './TodoList';
 
-function todoForm({ setTodos, todos }) {
+function Form({ setTodos, todos }) {
   const [todoValue, setTodoValue] = React.useState('');
 
   const handleSubmit = () => {
     if (todoValue.length === 0) {
-      toast.error('Lütfen todo giriniz');
+      toast.error('Please enter a todo');
     } else if (todos.includes(todoValue)) {
-      toast.error('Bu todo zaten var');
+      toast.error('Todo Already exixts');
     } else {
       setTodos([...todos, todoValue]);
       setTodoValue('');
-      toast.success('Todo başarıyla eklendi');
+      toast.success('Todo successfully added');
     }
   };
 
@@ -52,4 +52,4 @@ function todoForm({ setTodos, todos }) {
   );
 }
 
-export default todoForm;
+export default Form;

@@ -1,6 +1,5 @@
 import React from 'react';
-import TodoForm from './components/TodoForm.jsx';
-import TodoList from './components/TodoList.jsx';
+import TodoForm from './components/Form';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';

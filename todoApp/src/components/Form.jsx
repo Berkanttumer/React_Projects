@@ -30,7 +30,7 @@ function Form({ setTodos, todos }) {
           <input
             className="text-2xl pt-2 pl-3 pr-3 pb-2"
             type="text"
-            placeholder="Lütfen todo giriniz"
+            placeholder="Please enter a todo"
             onChange={(e) => setTodoValue(e.target.value)}
             value={todoValue}
           />

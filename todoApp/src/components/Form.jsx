@@ -10,7 +10,7 @@ function Form({ setTodos, todos }) {
     if (todoValue.length === 0) {
       toast.error('Please enter a todo');
     } else if (todos.includes(todoValue)) {
-      toast.error('Todo Already exixts');
+      toast.error('Todo already exixts');
     } else {
       setTodos([...todos, todoValue]);
       setTodoValue('');
@@ -41,7 +41,7 @@ function Form({ setTodos, todos }) {
               handleSubmit();
             }}
           >
-            Ekle
+            Add
           </button>
         </div>
         <ul className="flex items-center justify-center flex-col mt-10 text-3xl gap-2">

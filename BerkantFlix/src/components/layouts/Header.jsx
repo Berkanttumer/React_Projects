@@ -16,7 +16,7 @@ const Header = () => {
                 <a className="w-[180px]">
                   <img className="" src={logo} alt="" />
                 </a>
-                <form action="search.html" className="mt-2 search-form-mobile">
+                <form className="mt-2 search-form-mobile">
                   <input
                     className="mobile-search"
                     id="searchInputMobile"
@@ -26,10 +26,10 @@ const Header = () => {
                 </form>
                 <ul className="list">
                   <li>
-                    <a href="index.html">Movies</a>
+                    <a>Movies</a>
                   </li>
                   <li>
-                    <a href="tv-shows.html">TV Shows</a>
+                    <a>TV Shows</a>
                   </li>
                 </ul>
               </div>
@@ -42,11 +42,11 @@ const Header = () => {
             <i className="fa-solid fa-bars"></i>
           </button>
           <div className="logo">
-            <a href="index.html" className="">
+            <a className="">
               <img className="w-[180px]" src={logo} alt="" />
             </a>
           </div>
-          <form action="search.html" id="search-form" className="search-form">
+          <form id="search-form" className="search-form">
             <div className="input relative">
               <input
                 className="text-l w-[780px] outline-none border-none text-black p-3 pl-6 rounded-full"

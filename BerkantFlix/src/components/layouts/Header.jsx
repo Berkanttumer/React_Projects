@@ -1,6 +1,7 @@
 import React from 'react';
 
 import logo from '../../assets/e9e7a5a5bda4050781491119636d0b0f.png';
+import { Link, NavLink } from 'react-router-dom';
 
 const Header = () => {
   return (
@@ -29,7 +30,7 @@ const Header = () => {
                     <a>Movies</a>
                   </li>
                   <li>
-                    <a>TV Shows</a>
+                    <NavLink to="/tvshows">TV Shows</NavLink>
                   </li>
                 </ul>
               </div>
@@ -42,9 +43,9 @@ const Header = () => {
             <i className="fa-solid fa-bars"></i>
           </button>
           <div className="logo">
-            <a className="">
+            <NavLink to="/" className="">
               <img className="w-[180px]" src={logo} alt="" />
-            </a>
+            </NavLink>
           </div>
           <form id="search-form" className="search-form">
             <div className="input relative">
@@ -63,14 +64,14 @@ const Header = () => {
           <div className="nav-menu ">
             <ul className="flex">
               <li>
-                <a className="nav-link" href="/index.html">
+                <NavLink to="/movies" className="nav-link">
                   Movies
-                </a>
+                </NavLink>
               </li>
               <li className="ml-5">
-                <a className="nav-link" href="/tv-shows.html">
+                <NavLink to="/tvshows" className="nav-link">
                   TV Shows
-                </a>
+                </NavLink>
               </li>
             </ul>
           </div>

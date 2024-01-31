@@ -7,6 +7,8 @@ import PopularTV from './components/layouts/PopularTV';
 import { Route, Routes } from 'react-router-dom';
 import Home from './components/pages/Home';
 import TvShows from './components/pages/TvShows';
+import Movies from './components/pages/Movies';
+import MovieDetails from './components/pages/MovieDetails';
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/tvshows" element={<TvShows />} />
+        <Route path="/movies" element={<Movies />} />
+        <Route path="/MovieDetails/:id" element={<MovieDetails />} />
       </Routes>
     </>
   );

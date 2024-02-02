@@ -26,9 +26,9 @@ const PopularMovies = () => {
         Popular Movies
       </h1>
       <div className="cards">
-        {movies.map((movie) => (
-          <Card movie={movie} key={movie.id} />
-        ))}
+        {movies.map((movie) => {
+          return <Card movie={movie} key={movie.id} />;
+        })}
       </div>
       ;
     </div>

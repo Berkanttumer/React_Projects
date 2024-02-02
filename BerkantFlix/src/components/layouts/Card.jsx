@@ -1,18 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import MovieDetails from '../pages/MovieDetails';
 
 const Card = ({ movie }) => {
-  console.log({ movie });
   return (
-    <Link to={`/MovieDetails/${movie?.id}`} className="card">
-      <div className="">
-        <img
-          src={`https://image.tmdb.org/t/p/original/${movie?.poster_path}`}
-          alt=""
-        />
+    <div>
+      <div key={movie?.id} className="card">
+        <Link to={`/MovieDetails/${movie?.id}`} className="card">
+          <img
+            src={`https://image.tmdb.org/t/p/w500${movie?.poster_path}`}
+            alt={movie?.title}
+          />
+        </Link>
+        <div className="card-info">
+          <h3>{movie?.title}</h3>
+          <p>{movie?.release_date}</p>
+        </div>
       </div>
-      <h2 className="text-center text-2xl">{movie?.title}</h2>
-    </Link>
+    </div>
   );
 };
 

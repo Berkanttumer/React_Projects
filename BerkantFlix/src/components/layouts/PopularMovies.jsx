@@ -1,24 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Card from './Card';
-import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  getPopularMovies,
+  getPopularMoviesData,
+} from '../../redux/TMDB/tmdbApiSlice';
 
 const PopularMovies = () => {
-  const [movies, setMovies] = useState([]);
-
-  const API_KEY = '3e2ad5311da9fce573c7f1bfb30b2d81';
-
-  const fetchData = async () => {
-    const res = await axios.get(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
-    );
-    const data = res.data;
-    setMovies(data.results);
-    console.log(data.results);
-  };
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    dispatch(getPopularMovies());
+  }, [dispatch]);
+
+  const movies = useSelector(getPopularMoviesData);
 
   return (
     <div className="container">
@@ -26,11 +21,10 @@ const PopularMovies = () => {
         Popular Movies
       </h1>
       <div className="cards">
-        {movies.map((movie) => {
-          return <Card movie={movie} key={movie.id} />;
-        })}
+        {movies.map((movie) => (
+          <Card key={movie.id} movie={movie} />
+        ))}
       </div>
-      ;
     </div>
   );
 };

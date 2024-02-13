@@ -4,17 +4,23 @@ import MovieDetails from '../pages/MovieDetails';
 
 const Card = ({ movie }) => {
   return (
-    <div>
-      <div key={movie?.id} className="card">
-        <Link to={`/MovieDetails/${movie?.id}`} className="card">
-          <img
-            src={`https://image.tmdb.org/t/p/w500${movie?.poster_path}`}
-            alt={movie?.title}
-          />
-        </Link>
-        <div className="card-info">
-          <h3>{movie?.title}</h3>
-          <p>{movie?.release_date}</p>
+    <div key={movie?.id} className="card">
+      <Link to={`/MovieDetails/${movie?.id}`}>
+        <img
+          src={`https://image.tmdb.org/t/p/w500${movie?.poster_path}`}
+          alt={movie?.title}
+        />
+      </Link>
+      <h2 className="font-bold">{movie?.title}</h2>
+      <div className="card-info flex justify-between items-center">
+        <div className="flex gap-2">
+          <p>
+            <i class="fas fa-star text-[#dc1a28]"></i>
+          </p>
+          <p>{movie.vote_average?.toFixed(1)}</p>
+        </div>
+        <div>
+          <p>{movie.release_date?.split('-')[0]}</p>
         </div>
       </div>
     </div>

@@ -20,7 +20,7 @@ const PopularMovies = () => {
       <h1 className="text-center uppercase text-2xl font-bold mb-12 mt-12">
         Popular Movies
       </h1>
-      <div className="cards">
+      <div className="cards gap-5">
         {movies.map((movie) => (
           <Card key={movie.id} movie={movie} />
         ))}

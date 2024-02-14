@@ -4,19 +4,19 @@ import 'swiper/css';
 import 'swiper/swiper-bundle.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  getPopularMovies,
-  getPopularMoviesData,
-} from '../../redux/TMDB/moviesSlice';
+  getPopularShows,
+  getPopularShowsData,
+} from '../../redux/TMDB/showsSlice';
 import { Link } from 'react-router-dom';
 
-const Slider = () => {
+const SliderShows = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getPopularMovies());
+    dispatch(getPopularShows());
   }, [dispatch]);
 
-  const movies = useSelector(getPopularMoviesData);
+  const Shows = useSelector(getPopularShowsData);
 
   return (
     <div className="mt-16 mr-10 ml-10">
@@ -25,10 +25,7 @@ const Slider = () => {
         slidesPerView={1}
         freeMode={true}
         loop={true}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
+        autoplay={true}
         breakpoints={{
           500: {
             slidesPerView: 2,
@@ -41,12 +38,12 @@ const Slider = () => {
           },
         }}
       >
-        {movies.map((movie) => (
-          <SwiperSlide key={movie.id}>
-            <Link to={`/MovieDetails/${movie.id}`}>
+        {Shows.map((show) => (
+          <SwiperSlide key={show.id}>
+            <Link to={`/ShowDetails/${show.id}`}>
               <img
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt={movie.title}
+                src={`https://image.tmdb.org/t/p/w500${show.poster_path}`}
+                alt={show.name}
               />
             </Link>
           </SwiperSlide>
@@ -56,4 +53,4 @@ const Slider = () => {
   );
 };
 
-export default Slider;
+export default SliderShows;

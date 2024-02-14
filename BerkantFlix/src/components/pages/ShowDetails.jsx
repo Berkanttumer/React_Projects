@@ -58,7 +58,9 @@ const ShowDetails = () => {
 
   useEffect(() => {
     fetchData(), recomShow(), trailerShow(), castingShow();
-  }, []);
+
+    window.scrollTo(0, 0);
+  }, [id]);
 
   return (
     <>

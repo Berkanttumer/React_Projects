@@ -18,7 +18,7 @@ const PopularTV = () => {
   return (
     <div className="container">
       <h1 className="text-center uppercase text-2xl font-bold mb-12 mt-12">
-        PopularTV
+        Popular
       </h1>
       <div className="cards gap-5">
         {shows?.map((show) => (

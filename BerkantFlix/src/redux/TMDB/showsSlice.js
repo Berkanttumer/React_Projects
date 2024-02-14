@@ -8,14 +8,6 @@ const initialState = {
   popularShows: [],
 };
 
-export const fetchAPIData = async (endPoint) => {
-  const res = await axios.get(
-    `${API_URL}${endPoint}?api_key=${API_KEY}&language=en-US&page=1`
-  );
-  const data = res.data;
-  return data;
-};
-
 export const getPopularShows = createAsyncThunk('getPopularShows', async () => {
   const res = await axios.get(
     `https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}&language=en-US&page=1`

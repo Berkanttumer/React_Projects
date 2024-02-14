@@ -8,6 +8,7 @@ import Home from './components/pages/Home';
 import TvShows from './components/pages/TvShows';
 import Movies from './components/pages/Movies';
 import MovieDetails from './components/pages/MovieDetails';
+import ShowDetails from './components/pages/ShowDetails';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/tvshows" element={<TvShows />} />
         <Route path="/movies" element={<Movies />} />
         <Route path="/MovieDetails/:id" element={<MovieDetails />} />
+        <Route path="/ShowDetails/:id" element={<ShowDetails />} />
       </Routes>
     </>
   );

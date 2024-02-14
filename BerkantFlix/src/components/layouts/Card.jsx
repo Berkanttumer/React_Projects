@@ -15,7 +15,7 @@ const Card = ({ movie }) => {
       <div className="card-info flex justify-between items-center">
         <div className="flex gap-2">
           <p>
-            <i class="fas fa-star text-[#dc1a28]"></i>
+            <i className="fas fa-star text-[#dc1a28]"></i>
           </p>
           <p>{movie.vote_average?.toFixed(1)}</p>
         </div>

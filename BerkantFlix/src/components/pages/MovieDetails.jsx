@@ -13,6 +13,7 @@ const MovieDetails = () => {
   const [trailerResult, setTrailerResult] = useState([]);
   const [recMovie, setRecMovie] = useState([]);
   const noImage = image;
+
   const API_KEY = import.meta.env.VITE_APP_API_KEY;
 
   const fetchData = async () => {

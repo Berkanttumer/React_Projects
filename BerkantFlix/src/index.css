@@ -370,11 +370,6 @@ body {
   height: 50%;
 }
 
-.swiper-wrapper {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-}
-
 .swiper-slide {
   text-align: center;
   font-size: 18px;
@@ -384,6 +379,8 @@ body {
   align-items: center;
 }
 
+.swiper-wrapper {
+}
 .swiper-rating {
   padding: 10px;
 }

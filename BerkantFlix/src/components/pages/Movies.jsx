@@ -1,12 +1,13 @@
 import React from 'react';
-import Swiper from '../layouts/Swiper';
+
 import PopularMovies from '../layouts/PopularMovies';
 import Footer from '../layouts/Footer';
+import Slider from '../layouts/Slider';
 
 const Movies = () => {
   return (
     <>
-      <Swiper />
+      <Slider />
       <PopularMovies />
       <Footer />
     </>

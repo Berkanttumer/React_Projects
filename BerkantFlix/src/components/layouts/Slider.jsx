@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   getPopularMovies,
   getPopularMoviesData,
-} from '../../redux/TMDB/tmdbApiSlice';
+} from '../../redux/TMDB/moviesSlice';
 import { Link } from 'react-router-dom';
 
 const Slider = () => {

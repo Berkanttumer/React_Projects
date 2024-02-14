@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   getPopularMovies,
   getPopularMoviesData,
-} from '../../redux/TMDB/tmdbApiSlice';
+} from '../../redux/TMDB/moviesSlice';
 
 const PopularMovies = () => {
   const dispatch = useDispatch();

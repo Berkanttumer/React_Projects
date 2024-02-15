@@ -1,9 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import logo from '../../assets/e9e7a5a5bda4050781491119636d0b0f.png';
-import { Link, NavLink } from 'react-router-dom';
+import {
+  Link,
+  NavLink,
+  useLocation,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from 'react-router-dom';
 
 const Header = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
+
+  let placeholder = 'Search a movie';
+  if (location.pathname.includes('tvshows')) {
+    placeholder = 'Search a show';
+  }
+
+  const handleInputChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(searchTerm);
+    navigate(`/search?search-term=${searchTerm}`);
+  };
   return (
     <div>
       <header className="header">
@@ -47,14 +71,20 @@ const Header = () => {
               <img className="w-[180px]" src={logo} alt="" />
             </NavLink>
           </div>
-          <form id="search-form" className="search-form">
+          <form
+            id="search-form"
+            className="search-form"
+            onSubmit={handleSubmit}
+          >
             <div className="input relative">
               <input
                 className="text-l w-[780px] outline-none border-none text-black p-3 pl-6 rounded-full"
                 type="text"
-                placeholder="Search a movie"
+                placeholder={placeholder}
                 id="searchInput"
                 name="search-term"
+                value={searchTerm}
+                onChange={handleInputChange}
               />
               <div className="button">
                 <button className="search-btn absolute">Search</button>

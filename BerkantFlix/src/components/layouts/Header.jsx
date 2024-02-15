@@ -14,11 +14,6 @@ const Header = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
 
-  let placeholder = 'Search a movie';
-  if (location.pathname.includes('tvshows')) {
-    placeholder = 'Search a show';
-  }
-
   const handleInputChange = (e) => {
     setSearchTerm(e.target.value);
   };
@@ -80,7 +75,7 @@ const Header = () => {
               <input
                 className="text-l w-[780px] outline-none border-none text-black p-3 pl-6 rounded-full"
                 type="text"
-                placeholder={placeholder}
+                placeholder="Search a movie or show"
                 id="searchInput"
                 name="search-term"
                 value={searchTerm}

@@ -42,9 +42,10 @@ const ShowDetails = () => {
     );
     const data = res.data;
     setCasts(data);
+    console.log(data);
   };
 
-  const firstTenActor = casts.crew?.slice(0, 10);
+  const firstTenActor = casts.cast?.slice(0, 10);
 
   const recomShow = async () => {
     const res = await axios.get(

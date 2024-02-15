@@ -26,7 +26,7 @@ const UpcomingMovies = () => {
       </h1>
       <div className="cards gap-5">
         {movies.map((movie) => {
-          return <Card key={movie.id} movie={movie} />;
+          return <Card key={movie.id} result={movie} type="movie" />;
         })}
       </div>
     </div>

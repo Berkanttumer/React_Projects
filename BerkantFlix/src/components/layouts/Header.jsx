@@ -18,6 +18,10 @@ const Header = () => {
     setSearchTerm(e.target.value);
   };
 
+  const handleLogoClick = () => {
+    setSearchTerm('');
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(searchTerm);
@@ -62,7 +66,7 @@ const Header = () => {
             <i className="fa-solid fa-bars"></i>
           </button>
           <div className="logo">
-            <NavLink to="/" className="">
+            <NavLink to="/" className="" onClick={handleLogoClick}>
               <img className="w-[180px]" src={logo} alt="" />
             </NavLink>
           </div>

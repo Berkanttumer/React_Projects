@@ -1,15 +1,21 @@
 import { Link } from 'react-router-dom';
+import image from '../../assets/no-image.jpg';
 
 const Card = ({ result, type }) => {
+  const noImage = image;
   console.log(type);
 
   return type === 'movie' ? (
     <div key={result?.id} className="card">
       <Link to={`/MovieDetails/${result?.id}`}>
-        <img
-          src={`https://image.tmdb.org/t/p/w500${result?.poster_path}`}
-          alt={result?.title}
-        />
+        {result.poster_path ? (
+          <img
+            src={`https://image.tmdb.org/t/p/w500${result?.poster_path}`}
+            alt={result?.title}
+          />
+        ) : (
+          <img src={noImage} />
+        )}
       </Link>
       <h2 className="font-bold">{result?.title}</h2>
       <div className="card-info flex justify-between items-center">
@@ -27,10 +33,14 @@ const Card = ({ result, type }) => {
   ) : (
     <div key={result?.id} className="card">
       <Link to={`/ShowDetails/${result?.id}`}>
-        <img
-          src={`https://image.tmdb.org/t/p/w500${result?.poster_path}`}
-          alt={result?.name}
-        />
+        {result.poster_path ? (
+          <img
+            src={`https://image.tmdb.org/t/p/w500${result?.poster_path}`}
+            alt={result?.name}
+          />
+        ) : (
+          <img src={noImage} />
+        )}
       </Link>
       <h2 className="font-bold">{result?.name}</h2>
       <div className="card-info flex justify-between items-center">

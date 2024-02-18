@@ -9,6 +9,7 @@ import {
   useParams,
   useSearchParams,
 } from 'react-router-dom';
+import LoginModal from './LoginModal';
 
 const Header = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -27,10 +28,20 @@ const Header = () => {
     console.log(searchTerm);
     navigate(`/search?search-term=${searchTerm}`);
   };
+
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <div>
-      <header className="header">
-        <div className="nav-wrapper">
+      <header className="header ">
+        <div className="nav-wrapper ">
           <div className="nav nav-black">
             <div className="nav nav-red">
               <div className="nav nav-white">
@@ -56,12 +67,16 @@ const Header = () => {
                     <NavLink to="/tvshows">TV Shows</NavLink>
                   </li>
                 </ul>
+                <div>
+                  <button>Sign in</button>
+                </div>
+                <div>Sign Up</div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="container flex items-center justify-between">
+        <div className="container flex items-center justify-between header-sticky">
           <button className="open-btn mobile-bar hidden">
             <i className="fa-solid fa-bars"></i>
           </button>
@@ -99,9 +114,19 @@ const Header = () => {
               </li>
               <li className="ml-5">
                 <NavLink to="/tvshows" className="nav-link">
-                  TV Shows
+                  Shows
                 </NavLink>
               </li>
+              <li className="ml-5">
+                <button onClick={handleOpen} className="font-bold ">
+                  Login
+                </button>
+              </li>
+              <LoginModal
+                open={open}
+                handleOpen={handleOpen}
+                handleClose={handleClose}
+              />
             </ul>
           </div>
         </div>

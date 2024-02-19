@@ -14,12 +14,26 @@ const style = css`
   transform: translate(-50%, -50%);
   width: 850px;
   height: 850px;
-  background-color: #242424;
-  padding: 4px;
+  background-color: black;
+  outline: none;
 
   @media (max-width: 900px) {
-    width: 250px;
-    height: 250px;
+    width: 550px;
+    height: 550px;
+  }
+
+  @media (max-width: 1200px) {
+    width: 550px;
+    height: 550px;
+  }
+  @media (max-width: 1500px) {
+    width: 600px;
+    height: 600px;
+  }
+
+  @media (max-width: 1900px) {
+    width: 750px;
+    height: 750px;
   }
 `;
 
@@ -43,7 +57,7 @@ const LoginModal = ({ handleOpen, handleClose, open }) => {
           <Typography
             id="modal-modal-description"
             sx={{ mt: 2 }}
-            className="w-1/2 "
+            className="w-1/2 p-4"
           >
             <div className="flex gap-5 mt-10">
               <button
@@ -72,10 +86,10 @@ const LoginModal = ({ handleOpen, handleClose, open }) => {
             onClick={handleClose}
             className="top-5 absolute right-5 hover:cursor-pointer"
           />
-          <div className="ml-6 object-cover ">
+          <div className="ml-3 object-cover ">
             <img
               src="https://image.tmdb.org/t/p/original/e7Jvsry47JJQruuezjU2X1Z6J77.jpg"
-              className="h-full w-[470px] object-cover"
+              className="h-full w-full object-cover"
             />
           </div>
         </Box>

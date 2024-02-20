@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import { useNavigate } from 'react-router-dom';
 
 import { UserAuth } from '../../context/AuthContext';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const LoginTemplate = ({ selected }) => {
+const LoginTemplate = ({ selected, handleClose }) => {
   // For password
   const [passwordSignIn, setPasswordSignIn] = useState('password');
 
@@ -26,6 +27,14 @@ const LoginTemplate = ({ selected }) => {
     setPassword2(password2 === 'password' ? 'text' : 'password');
   };
 
+  const handleLogin = async () => {
+    try {
+      await signUp(email, password);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -41,7 +50,10 @@ const LoginTemplate = ({ selected }) => {
     }
     try {
       await signUp(email, password);
+      await updateUserName(username);
+
       toast.success('Account created successfully');
+      handleClose();
     } catch (error) {
       console.log(error);
     }
@@ -53,9 +65,15 @@ const LoginTemplate = ({ selected }) => {
     setPassword(e.target.value);
   };
 
+  const [username, setUsername] = useState('');
+
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
+  };
+
   const [email, setEmail] = useState('');
 
-  const { user, signUp } = UserAuth();
+  const { user, signUp, updateUserName } = UserAuth();
 
   return selected === 'signin' ? (
     <div className="mt-10">
@@ -83,7 +101,10 @@ const LoginTemplate = ({ selected }) => {
             className="text-black absolute top-[53%] right-0 hover:cursor-pointer"
           />
         )}
-        <button className="mt-12 bg-[#DC1A28] text-black font-bold p-1 rounded-md">
+        <button
+          className="mt-12 bg-[#DC1A28] text-black font-bold p-1 rounded-md"
+          onClick={handleLogin}
+        >
           Sign in
         </button>
       </div>
@@ -98,6 +119,14 @@ const LoginTemplate = ({ selected }) => {
             type="text"
             className="rounded-md outline-none pl-2 p-1 text-gray-600 mt-2 "
             placeholder="you@example.com"
+          />
+        </div>
+        <div className="flex flex-col mt-5">
+          <label>Username </label>
+          <input
+            onChange={handleUsernameChange}
+            type="text"
+            className="rounded-md outline-none pl-2 p-1 text-gray-600 mt-2 "
           />
         </div>
         <div className="flex flex-col mt-5 relative">

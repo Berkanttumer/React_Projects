@@ -10,11 +10,14 @@ import {
   useSearchParams,
 } from 'react-router-dom';
 import LoginModal from './LoginModal';
+import { UserAuth } from '../../context/AuthContext';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const Header = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
-
+  const { user, logOut } = UserAuth();
+  console.log(user);
   const handleInputChange = (e) => {
     setSearchTerm(e.target.value);
   };
@@ -37,6 +40,15 @@ const Header = () => {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handlelogout = async () => {
+    try {
+      await logOut();
+      navigate('/');
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div>
@@ -117,11 +129,28 @@ const Header = () => {
                   Shows
                 </NavLink>
               </li>
-              <li className="ml-5">
-                <button onClick={handleOpen} className="font-bold ">
-                  Login
-                </button>
-              </li>
+              {user?.email ? (
+                <>
+                  <li className="ml-5">
+                    <button className="font-bold ">
+                      <Link to="/Account">
+                        <AccountCircleIcon />
+                      </Link>
+                    </button>
+                  </li>
+                  <li className="ml-1">
+                    <button onClick={handlelogout} className="text-sm">
+                      Logout
+                    </button>
+                  </li>
+                </>
+              ) : (
+                <li className="ml-5">
+                  <button onClick={handleOpen} className="font-bold ">
+                    Login
+                  </button>
+                </li>
+              )}{' '}
               <LoginModal
                 open={open}
                 handleOpen={handleOpen}

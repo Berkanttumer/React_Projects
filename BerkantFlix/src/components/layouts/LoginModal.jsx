@@ -55,6 +55,7 @@ const LoginModal = ({ handleOpen, handleClose, open }) => {
             component="h2"
           ></Typography>
           <Typography
+            component="div"
             id="modal-modal-description"
             sx={{ mt: 2 }}
             className="w-1/2 p-4"
@@ -80,8 +81,9 @@ const LoginModal = ({ handleOpen, handleClose, open }) => {
               </button>
             </div>
 
-            <LoginTemplate selected={selected} />
+            <LoginTemplate selected={selected} handleClose={handleClose} />
           </Typography>
+
           <CloseIcon
             onClick={handleClose}
             className="top-5 absolute right-5 hover:cursor-pointer"

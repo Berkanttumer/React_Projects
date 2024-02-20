@@ -1,22 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/swiper-bundle.css';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  getPopularMovies,
-  getPopularMoviesData,
-} from '../../redux/TMDB/moviesSlice';
+
 import { Link } from 'react-router-dom';
+import { PopularContext } from '../../context/popular';
 
 const Slider = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getPopularMovies());
-  }, [dispatch]);
-
-  const movies = useSelector(getPopularMoviesData);
+  const { popularMovies } = useContext(PopularContext);
 
   return (
     <div className="mt-16 mr-10 ml-10">
@@ -41,7 +32,7 @@ const Slider = () => {
           },
         }}
       >
-        {movies.map((movie) => (
+        {popularMovies.map((movie) => (
           <SwiperSlide key={movie.id}>
             <Link to={`/MovieDetails/${movie.id}`}>
               <img

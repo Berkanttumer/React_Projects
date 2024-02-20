@@ -1,23 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/swiper-bundle.css';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  getPopularShows,
-  getPopularShowsData,
-} from '../../redux/TMDB/showsSlice';
+
 import { Link } from 'react-router-dom';
+import { PopularContext } from '../../context/popular';
 
 const SliderShows = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getPopularShows());
-  }, [dispatch]);
-
-  const Shows = useSelector(getPopularShowsData);
-
+  const { popularShows } = useContext(PopularContext);
   return (
     <div className="mt-16 mr-10 ml-10">
       <Swiper
@@ -38,7 +28,7 @@ const SliderShows = () => {
           },
         }}
       >
-        {Shows.map((show) => (
+        {popularShows.map((show) => (
           <SwiperSlide key={show.id}>
             <Link to={`/ShowDetails/${show.id}`}>
               <img

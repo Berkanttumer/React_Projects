@@ -10,6 +10,7 @@ import Movies from './components/pages/Movies';
 import MovieDetails from './components/pages/MovieDetails';
 import ShowDetails from './components/pages/ShowDetails';
 import Search from './components/pages/Search';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/ShowDetails/:id" element={<ShowDetails />} />
         <Route path="/Search" element={<Search />} />
       </Routes>
+      <ToastContainer />
     </>
   );
 }

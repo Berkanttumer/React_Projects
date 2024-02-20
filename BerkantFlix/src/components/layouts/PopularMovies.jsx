@@ -1,19 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Card from './Card';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  getPopularMovies,
-  getPopularMoviesData,
-} from '../../redux/TMDB/moviesSlice';
+
+import { PopularContext } from '../../context/popular';
 
 const PopularMovies = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getPopularMovies());
-  }, [dispatch]);
-
-  const movies = useSelector(getPopularMoviesData);
+  const { popularMovies } = useContext(PopularContext);
 
   return (
     <div className="container">
@@ -21,7 +12,7 @@ const PopularMovies = () => {
         Popular
       </h1>
       <div className="cards gap-5">
-        {movies.map((movie) => (
+        {popularMovies.map((movie) => (
           <Card key={movie.id} result={movie} type="movie" />
         ))}
       </div>

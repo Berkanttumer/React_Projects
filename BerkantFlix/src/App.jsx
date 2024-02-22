@@ -13,7 +13,7 @@ import Search from './components/pages/Search';
 import { ToastContainer } from 'react-toastify';
 import Account from './components/pages/Account';
 import { UserAuth } from './context/AuthContext';
-import ErrorPage from './components/pages/ErrorPage';
+import ProtectedRoute from './components/Routes/ProtectedRoute';
 
 function App() {
   const { user, logOut } = UserAuth();
@@ -27,8 +27,14 @@ function App() {
         <Route path="/MovieDetails/:id" element={<MovieDetails />} />
         <Route path="/ShowDetails/:id" element={<ShowDetails />} />
         <Route path="/Search" element={<Search />} />
-        <Route path="/Account" element={<Account />} />
-        <Route path="/ErrorPage" element={<ErrorPage />} />
+        <Route
+          path="/Account"
+          element={
+            <ProtectedRoute>
+              <Account />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
       <ToastContainer />
     </>

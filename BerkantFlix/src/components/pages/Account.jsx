@@ -6,11 +6,16 @@ const Account = () => {
   const navigate = useNavigate();
   const { user, logOut } = UserAuth();
   return (
-    <div className="flex items-center justify-center flex-col">
-      <h1 className="text-center mt-10 mb-10 text-3xl">Account Details</h1>
-      <h2>UserName: {user?.displayName}</h2>
-      <h2>UserName: {user?.email}</h2>
-    </div>
+    <>
+      <div className="container text-account">
+        <h1 className=" mt-16 mb-10 text-3xl ">Account Details</h1>
+        <h2>UserName: {user?.displayName}</h2>
+        <h2>E-Mail: {user?.email}</h2>
+      </div>
+      <div className="container">
+        <h1 className="text-3xl mt-20">My Shows</h1>
+      </div>
+    </>
   );
 };
 

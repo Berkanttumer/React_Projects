@@ -12,6 +12,7 @@ import {
 import LoginModal from './LoginModal';
 import { UserAuth } from '../../context/AuthContext';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const Header = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -92,9 +93,9 @@ const Header = () => {
           <button className="open-btn mobile-bar hidden">
             <i className="fa-solid fa-bars"></i>
           </button>
-          <div className="logo">
+          <div className="logo w-[180px] flex-shrink-0">
             <NavLink to="/" className="" onClick={handleLogoClick}>
-              <img className="w-[180px]" src={logo} alt="" />
+              <img className="w-full" src={logo} alt="" />
             </NavLink>
           </div>
           <form
@@ -104,7 +105,7 @@ const Header = () => {
           >
             <div className="input relative">
               <input
-                className="text-l w-[780px] outline-none border-none text-black p-3 pl-6 rounded-full"
+                className="text-l w-[780px] outline-none border-none text-black p-3 pl-6 rounded-full "
                 type="text"
                 placeholder="Search a movie or show"
                 id="searchInput"
@@ -119,7 +120,7 @@ const Header = () => {
           </form>
           <div className="nav-menu ">
             <ul className="flex">
-              <li>
+              <li className="ml-5">
                 <NavLink to="/movies" className="nav-link">
                   Movies
                 </NavLink>
@@ -138,9 +139,12 @@ const Header = () => {
                       </Link>
                     </button>
                   </li>
-                  <li className="ml-1">
-                    <button onClick={handlelogout} className="text-sm">
-                      Logout
+                  <li className="ml-1 flex items-center justify-center">
+                    <p className="text-sm  ">{user?.displayName}</p>
+                  </li>
+                  <li>
+                    <button className="ml-5">
+                      <LogoutIcon onClick={handlelogout} />
                     </button>
                   </li>
                 </>

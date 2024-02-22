@@ -1,12 +1,32 @@
 import { Link } from 'react-router-dom';
 import image from '../../assets/no-image.jpg';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { useState } from 'react';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const Card = ({ result, type }) => {
   const noImage = image;
   console.log(type);
+  const [favorite, setFavorite] = useState(false);
+
+  const addFavorite = () => {
+    setFavorite(true);
+  };
 
   return type === 'movie' ? (
-    <div key={result?.id} className="card">
+    <div key={result?.id} className="card relative">
+      {!favorite ? (
+        <FavoriteBorderIcon
+          className="absolute top-5 !w-[20px] !h-[20px] left-3 hover:cursor-pointer"
+          onClick={addFavorite}
+        />
+      ) : (
+        <FavoriteIcon
+          className="absolute top-5 !w-[20px] !h-[20px] left-3 hover:cursor-pointer"
+          onClick={addFavorite}
+        />
+      )}
+
       <Link to={`/MovieDetails/${result?.id}`}>
         {result.poster_path ? (
           <img
@@ -31,7 +51,18 @@ const Card = ({ result, type }) => {
       </div>
     </div>
   ) : (
-    <div key={result?.id} className="card">
+    <div key={result?.id} className="card relative">
+      {!favorite ? (
+        <FavoriteBorderIcon
+          className="absolute top-5 !w-[20px] !h-[20px] left-3 hover:cursor-pointer"
+          onClick={addFavorite}
+        />
+      ) : (
+        <FavoriteIcon
+          className="absolute top-5 !w-[20px] !h-[20px] left-3 hover:cursor-pointer"
+          onClick={addFavorite}
+        />
+      )}
       <Link to={`/ShowDetails/${result?.id}`}>
         {result.poster_path ? (
           <img

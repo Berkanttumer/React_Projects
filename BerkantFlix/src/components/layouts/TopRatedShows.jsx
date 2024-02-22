@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Card from './Card';
-import ShowsCard from './showsCard';
 
 const TopRatedShows = () => {
   const API_KEY = import.meta.env.VITE_APP_API_KEY;
@@ -27,7 +26,7 @@ const TopRatedShows = () => {
       </h1>
       <div className="cards gap-5">
         {shows.map((show) => {
-          return <ShowsCard key={show.id} show={show} />;
+          return <Card key={show.id} result={show} type="show" />;
         })}
       </div>
     </div>

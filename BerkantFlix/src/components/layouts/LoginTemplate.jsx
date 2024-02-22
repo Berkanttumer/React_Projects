@@ -29,7 +29,8 @@ const LoginTemplate = ({ selected, handleClose }) => {
 
   const handleLogin = async () => {
     try {
-      await signUp(email, password);
+      await logIn(email, password);
+      handleClose();
     } catch (error) {
       console.log(error);
     }
@@ -73,13 +74,14 @@ const LoginTemplate = ({ selected, handleClose }) => {
 
   const [email, setEmail] = useState('');
 
-  const { user, signUp, updateUserName } = UserAuth();
+  const { user, signUp, logIn, updateUserName } = UserAuth();
 
   return selected === 'signin' ? (
     <div className="mt-10">
       <div className="flex flex-col relative">
         <label>E-posta or username</label>
         <input
+          onChange={handleEmailChange}
           type="text"
           className="rounded-md outline-none  pl-2 p-1 text-gray-600 mt-2"
           placeholder="you@example.com"

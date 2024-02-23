@@ -5,6 +5,7 @@ import { db } from '../../firebase';
 import { updateDoc, doc } from 'firebase/firestore';
 import { UserAuth } from '../../context/AuthContext';
 import Card from './Card';
+import CardForFavorites from './CardForFavorites';
 
 const SavedMoviesShows = () => {
   const { user } = UserAuth();
@@ -17,9 +18,14 @@ const SavedMoviesShows = () => {
   }, [user?.email]);
 
   return (
-    <div className="cards gap-5 mt-10">
+    <div className="cards-favorites gap-5 mt-10">
       {moviesShows.map((item) => (
-        <Card key={item.id} result={item} type={item.type} />
+        <CardForFavorites
+          key={item.id}
+          result={item}
+          type={item.type}
+          movies={moviesShows}
+        />
       ))}
     </div>
   );

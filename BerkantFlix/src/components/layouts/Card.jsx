@@ -1,11 +1,11 @@
 import { Await, Link } from 'react-router-dom';
 import image from '../../assets/no-image.jpg';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { UserAuth } from '../../context/AuthContext';
 import { db } from '../../firebase';
-import { arrayUnion, doc, updateDoc } from 'firebase/firestore';
+import { arrayUnion, doc, getDoc, updateDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 
 const Card = ({ result, type }) => {
@@ -17,6 +17,9 @@ const Card = ({ result, type }) => {
   const MovieShowId = doc(db, 'users', `${user?.email}`);
   const saveMovieShow = async () => {
     if (user?.email) {
+      if (favorite) {
+        return;
+      }
       setFavorite(!favorite);
       setSaved(true);
       await updateDoc(MovieShowId, {
@@ -32,6 +35,23 @@ const Card = ({ result, type }) => {
     }
   };
 
+  useEffect(() => {
+    const checkFavorite = async () => {
+      const docSnapshot = await getDoc(MovieShowId);
+      if (docSnapshot.exists()) {
+        const userData = docSnapshot.data();
+        const isFavorite = userData.savedMoviesOrShows.some(
+          (movieShow) => movieShow.id === result?.id
+        );
+        setFavorite(isFavorite);
+      }
+    };
+
+    if (user?.email) {
+      checkFavorite();
+    }
+  }, [user?.email, result?.id]);
+
   return type === 'movie' ? (
     <div key={result?.id} className="card relative">
       {!favorite ? (
@@ -41,7 +61,7 @@ const Card = ({ result, type }) => {
         />
       ) : (
         <FavoriteIcon
-          className="absolute top-5 !w-[20px] !h-[20px] left-3 hover:cursor-pointer"
+          className="absolute top-5 !w-[20px] !h-[20px] left-3 hover:cursor-pointer text-red-600"
           onClick={saveMovieShow}
         />
       )}
@@ -78,7 +98,7 @@ const Card = ({ result, type }) => {
         />
       ) : (
         <FavoriteIcon
-          className="absolute top-5 !w-[20px] !h-[20px] left-3 hover:cursor-pointer"
+          className="absolute top-5 !w-[20px] !h-[20px] left-3 hover:cursor-pointer text-red-600"
           onClick={saveMovieShow}
         />
       )}

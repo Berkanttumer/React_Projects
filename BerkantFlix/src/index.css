@@ -4,6 +4,12 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
 
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 body {
   background-color: black;
   color: white;
@@ -164,6 +170,11 @@ header-sticky {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
+.cards-favorites {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
+}
+
 .card {
   padding: 5px;
 }
@@ -177,9 +188,6 @@ header-sticky {
 .card h2 {
   font-size: 18px;
   padding: 10px 10px;
-}
-
-.card p {
 }
 
 .card a img {
@@ -199,7 +207,7 @@ header-sticky {
 .container {
   max-width: 1200px;
   width: 100%;
-  margin: 0 auto;
+  margin: 0 auto 50px auto;
   padding: 0 20px;
 }
 
@@ -422,7 +430,7 @@ header-sticky {
 }
 
 footer {
-  margin-top: 50px;
+  margin-top: auto;
 }
 
 footer .container {

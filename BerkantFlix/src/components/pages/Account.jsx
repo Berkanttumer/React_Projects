@@ -13,7 +13,7 @@ const Account = () => {
         <h2>E-Mail: {user?.email}</h2>
       </div>
       <div className="container">
-        <h1 className="text-3xl mt-20">My Shows</h1>
+        <h1 className="text-3xl mt-20">My Favorites</h1>
         <SavedMoviesShows />
       </div>
     </>

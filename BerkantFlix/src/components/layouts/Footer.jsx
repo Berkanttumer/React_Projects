@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="footer flex justify-between border-t border-gray-500 items-center mt-5">
+    <footer className="footer flex justify-between border-t border-gray-500 items-center ">
       <div className="container flex justify-between mt-5">
         <div className="copyright">© Copyright 2023</div>
         <div className="icons">

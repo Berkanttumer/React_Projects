@@ -18,7 +18,7 @@ import ProtectedRoute from './components/Routes/ProtectedRoute';
 function App() {
   const { user, logOut } = UserAuth();
   return (
-    <>
+    <div className="app">
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -37,7 +37,8 @@ function App() {
         />
       </Routes>
       <ToastContainer />
-    </>
+      <Footer />
+    </div>
   );
 }
 

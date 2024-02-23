@@ -11,7 +11,6 @@ const Movies = () => {
       <Slider />
       <UpcomingMovies />
       <PopularMovies />
-      <Footer />
     </>
   );
 };

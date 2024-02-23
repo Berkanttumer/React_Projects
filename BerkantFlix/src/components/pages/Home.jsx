@@ -11,7 +11,6 @@ const Home = () => {
       <Slider />
       <PopularMovies />
       <PopularTV />
-      <Footer />
     </>
   );
 };

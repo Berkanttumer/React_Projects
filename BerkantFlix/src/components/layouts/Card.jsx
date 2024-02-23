@@ -1,16 +1,35 @@
-import { Link } from 'react-router-dom';
+import { Await, Link } from 'react-router-dom';
 import image from '../../assets/no-image.jpg';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { useState } from 'react';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { UserAuth } from '../../context/AuthContext';
+import { db } from '../../firebase';
+import { arrayUnion, doc, updateDoc } from 'firebase/firestore';
+import { toast } from 'react-toastify';
 
 const Card = ({ result, type }) => {
   const noImage = image;
-  console.log(type);
   const [favorite, setFavorite] = useState(false);
+  const [saved, setSaved] = useState(false);
+  const { user } = UserAuth();
 
-  const addFavorite = () => {
-    setFavorite(true);
+  const MovieShowId = doc(db, 'users', `${user?.email}`);
+  const saveMovieShow = async () => {
+    if (user?.email) {
+      setFavorite(!favorite);
+      setSaved(true);
+      await updateDoc(MovieShowId, {
+        savedMoviesOrShows: arrayUnion({
+          id: result?.id,
+          title: result?.title || result?.name,
+          poster_path: result?.poster_path,
+          type: result.title ? 'movie' : 'show',
+        }),
+      });
+    } else {
+      toast.error('Please login to save movies or shows');
+    }
   };
 
   return type === 'movie' ? (
@@ -18,12 +37,12 @@ const Card = ({ result, type }) => {
       {!favorite ? (
         <FavoriteBorderIcon
           className="absolute top-5 !w-[20px] !h-[20px] left-3 hover:cursor-pointer"
-          onClick={addFavorite}
+          onClick={saveMovieShow}
         />
       ) : (
         <FavoriteIcon
           className="absolute top-5 !w-[20px] !h-[20px] left-3 hover:cursor-pointer"
-          onClick={addFavorite}
+          onClick={saveMovieShow}
         />
       )}
 
@@ -55,12 +74,12 @@ const Card = ({ result, type }) => {
       {!favorite ? (
         <FavoriteBorderIcon
           className="absolute top-5 !w-[20px] !h-[20px] left-3 hover:cursor-pointer"
-          onClick={addFavorite}
+          onClick={saveMovieShow}
         />
       ) : (
         <FavoriteIcon
           className="absolute top-5 !w-[20px] !h-[20px] left-3 hover:cursor-pointer"
-          onClick={addFavorite}
+          onClick={saveMovieShow}
         />
       )}
       <Link to={`/ShowDetails/${result?.id}`}>

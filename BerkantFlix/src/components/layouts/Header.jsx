@@ -4,6 +4,7 @@ import logo from '../../assets/e9e7a5a5bda4050781491119636d0b0f.png';
 import {
   Link,
   NavLink,
+  Navigate,
   useLocation,
   useNavigate,
   useParams,
@@ -13,6 +14,7 @@ import LoginModal from './LoginModal';
 import { UserAuth } from '../../context/AuthContext';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
+import Account from '../pages/Account';
 
 const Header = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -51,6 +53,7 @@ const Header = () => {
       console.log(error);
     }
   };
+
   return (
     <div>
       <header className="header ">
@@ -132,19 +135,18 @@ const Header = () => {
               </li>
               {user?.email ? (
                 <>
-                  <li className="ml-5">
-                    <button className="font-bold ">
-                      <Link to="/Account">
-                        <AccountCircleIcon />
-                      </Link>
-                    </button>
-                  </li>
-                  <li className="ml-1 flex items-center justify-center">
-                    <p className="text-sm  ">{user?.displayName}</p>
+                  <li
+                    className="ml-5 flex items-center justify-center hover:cursor-pointer"
+                    onClick={() => {
+                      navigate('/Account');
+                    }}
+                  >
+                    <AccountCircleIcon />
+                    <p className="ml-1">{user?.displayName}</p>
                   </li>
                   <li>
-                    <button className="ml-5">
-                      <LogoutIcon onClick={handlelogout} />
+                    <button className="ml-1" onClick={handlelogout}>
+                      Logout
                     </button>
                   </li>
                 </>

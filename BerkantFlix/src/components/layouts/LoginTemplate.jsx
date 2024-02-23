@@ -9,23 +9,15 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const LoginTemplate = ({ selected, handleClose }) => {
   // For password
-  const [passwordSignIn, setPasswordSignIn] = useState('password');
+  const [passwordSignIn, setPasswordSignIn] = useState('');
 
   const handlePasswordSign = () => {
-    setPasswordSignIn(passwordSignIn === 'password' ? 'text' : 'password');
+    setPasswordSignIn(passwordSignIn.type === 'password' ? 'text' : 'password');
   };
 
   // For confirm password
-  const [password, setPassword] = useState('password');
-  const [password2, setPassword2] = useState('password');
-
-  const handleClick = () => {
-    setPassword(password === 'password' ? 'text' : 'password');
-  };
-
-  const handleClick2 = () => {
-    setPassword2(password2 === 'password' ? 'text' : 'password');
-  };
+  const [password, setPassword] = useState('');
+  const [password2, setPassword2] = useState('');
 
   const handleLogin = async () => {
     try {
@@ -39,20 +31,18 @@ const LoginTemplate = ({ selected, handleClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (password.length === 0 || password2.length === 0) {
+    if (password.length === 0) {
       toast.error('Passwords cannot be empty');
       return;
-    } else if (password !== password2) {
-      toast.error('Passwords do not match');
-      return;
-    } else if (password.length < 6) {
-      toast.error('Password must be at least 6 characters');
-      return;
+      // } else if (password !== password2) {
+      //   toast.error('Passwords do not match');
+      //   return;
+      // } else if (password.length < 6) {
+      //   toast.error('Password must be at least 6 characters');
+      //   return;
     }
     try {
       await signUp(email, password);
-      await updateUserName(username);
-
       toast.success('Account created successfully');
       handleClose();
     } catch (error) {
@@ -66,8 +56,6 @@ const LoginTemplate = ({ selected, handleClose }) => {
     setPassword(e.target.value);
   };
 
-  const [username, setUsername] = useState('');
-
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
   };
@@ -79,7 +67,7 @@ const LoginTemplate = ({ selected, handleClose }) => {
   return selected === 'signin' ? (
     <div className="mt-10">
       <div className="flex flex-col relative">
-        <label>E-posta or username</label>
+        <label>E-posta</label>
         <input
           onChange={handleEmailChange}
           type="text"
@@ -92,7 +80,7 @@ const LoginTemplate = ({ selected, handleClose }) => {
           type={passwordSignIn}
           className="rounded-md outline-none  p-1 text-gray-600 mt-2"
         />
-        {passwordSignIn === 'password' ? (
+        {/* {passwordSignIn === 'password' ? (
           <VisibilityOffIcon
             onClick={handlePasswordSign}
             className="text-black absolute top-[53%] right-0 hover:cursor-pointer"
@@ -102,7 +90,7 @@ const LoginTemplate = ({ selected, handleClose }) => {
             onClick={handlePasswordSign}
             className="text-black absolute top-[53%] right-0 hover:cursor-pointer"
           />
-        )}
+        )} */}
         <button
           className="mt-12 bg-[#DC1A28] text-black font-bold p-1 rounded-md"
           onClick={handleLogin}
@@ -123,14 +111,6 @@ const LoginTemplate = ({ selected, handleClose }) => {
             placeholder="you@example.com"
           />
         </div>
-        <div className="flex flex-col mt-5">
-          <label>Username </label>
-          <input
-            onChange={handleUsernameChange}
-            type="text"
-            className="rounded-md outline-none pl-2 p-1 text-gray-600 mt-2 "
-          />
-        </div>
         <div className="flex flex-col mt-5 relative">
           <label>Password</label>
           <input
@@ -138,19 +118,13 @@ const LoginTemplate = ({ selected, handleClose }) => {
             onChange={(e) => setPassword(e.target.value)}
             className="rounded-md outline-none p-1 text-gray-600 mt-2 "
           />
-          {password === 'password' ? (
-            <VisibilityOffIcon
-              onClick={handleClick}
-              className="text-black absolute top-[58%] right-0 hover:cursor-pointer"
-            />
+          {/* {password === 'password' ? (
+            <VisibilityOffIcon className="text-black absolute top-[58%] right-0 hover:cursor-pointer" />
           ) : (
-            <VisibilityIcon
-              onClick={handleClick}
-              className="text-black absolute top-[58%] right-0 hover:cursor-pointer"
-            />
-          )}
+            <VisibilityIcon className="text-black absolute top-[58%] right-0 hover:cursor-pointer" />
+          )} */}
         </div>
-        <div className="flex flex-col mt-5 relative">
+        {/* <div className="flex flex-col mt-5 relative">
           <label className="">Confirm Password</label>
           <input
             type={password2}
@@ -168,7 +142,7 @@ const LoginTemplate = ({ selected, handleClose }) => {
               className="text-black absolute top-[58%] right-0 hover:cursor-pointer"
             />
           )}
-        </div>
+        </div> */}
 
         <button
           onClick={handleSubmit}

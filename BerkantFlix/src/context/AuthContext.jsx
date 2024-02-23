@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { auth } from '../firebase';
+import { auth, db } from '../firebase';
+import { setDoc, doc, getDoc } from 'firebase/firestore';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -10,11 +11,23 @@ import {
 
 const AuthContext = createContext();
 
-export function AuthContextPorvider({ children }) {
+export function AuthContextProvider({ children }) {
   const [user, setUser] = useState('');
 
-  function signUp(email, password) {
-    return createUserWithEmailAndPassword(auth, email, password);
+  // function signUp(email, password, username) {
+  //   createUserWithEmailAndPassword(auth, email, password);
+  //   setDoc(doc(db, 'users', email), {
+  //     username: username,
+  //     savedMovies: [],
+  //     savedShows: [],
+  //   });
+  // }
+
+  async function signUp(email, password) {
+    await createUserWithEmailAndPassword(auth, email, password);
+    setDoc(doc(db, 'users', email), {
+      savedMoviesOrShows: [],
+    });
   }
 
   function logIn(email, password) {
@@ -23,12 +36,6 @@ export function AuthContextPorvider({ children }) {
 
   function logOut() {
     return signOut(auth);
-  }
-
-  function updateUserName(name) {
-    return updateProfile(auth.currentUser, {
-      displayName: name,
-    });
   }
 
   useEffect(() => {
@@ -40,11 +47,9 @@ export function AuthContextPorvider({ children }) {
     };
   });
 
-  useEffect(() => {});
-
   return (
     <AuthContext.Provider
-      value={{ signUp, logIn, logOut, updateUserName, user }}
+      value={{ signUp, logIn, updateProfile, logOut, user }}
     >
       {children}
     </AuthContext.Provider>

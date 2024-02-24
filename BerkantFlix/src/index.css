@@ -13,6 +13,7 @@
 body {
   background-color: black;
   color: white;
+  overflow-x: hidden;
 }
 
 .text-account {
@@ -21,12 +22,6 @@ body {
 
 .nav-btn {
   font-size: 20px;
-}
-
-.open-btn {
-  position: fixed;
-  top: 10px;
-  left: 10px;
 }
 
 .nav {
@@ -131,17 +126,15 @@ body {
 
 /*Main*/
 .header {
-  margin-top: 20px;
-}
-
-header-sticky {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+  background-color: black;
 }
 
 .fa-bars {
   font-size: 25px;
+  color: white;
 }
 
 .btn {
@@ -211,9 +204,59 @@ header-sticky {
   padding: 0 20px;
 }
 
-/*TV Shows*/
-
 /*Movie Details Page*/
+
+.movie-background {
+  @media (max-width: 1200px) {
+    display: flex;
+    flex-direction: column;
+    position: unset;
+  }
+}
+
+.details-page {
+  @media (max-width: 1200px) {
+    max-height: unset;
+  }
+}
+
+.actors {
+  @media (max-width: 1200px) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+
+.actor {
+  @media (max-width: 1200px) {
+    width: unset;
+  }
+}
+
+.right-col {
+  @media (max-width: 1200px) {
+    width: unset;
+  }
+}
+
+.movie-background {
+  @media (max-width: 1200px) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
+.top-title div {
+  @media (max-width: 1200px) {
+    width: 350px;
+  }
+}
+
+.top-title p {
+  @media (max-width: 1200px) {
+    width: 350px;
+  }
+}
 
 .fa-play {
   font-size: 35px;
@@ -339,6 +382,14 @@ header-sticky {
 }
 
 /* TV Details Page */
+
+.show-background {
+  @media (max-width: 1200px) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
 .tv-top-rank > div {
   font-size: 20px;
 }
@@ -399,8 +450,6 @@ header-sticky {
   align-items: center;
 }
 
-.swiper-wrapper {
-}
 .swiper-rating {
   padding: 10px;
 }
@@ -418,7 +467,7 @@ header-sticky {
   .mobile-bar {
     display: flex;
     position: fixed;
-    top: 20px;
+
     left: 20px;
     font-size: 30px;
     z-index: 1;

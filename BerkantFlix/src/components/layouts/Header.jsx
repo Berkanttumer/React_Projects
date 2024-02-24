@@ -17,6 +17,17 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import Account from '../pages/Account';
 
 const Header = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [mobileModal, setMobileModal] = useState(false);
+
+  const handleOpenBtn = () => {
+    setIsVisible(true);
+  };
+
+  const handleCloseBtn = () => {
+    setIsVisible(false);
+  };
+
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
   const { user, logOut } = UserAuth();
@@ -56,44 +67,71 @@ const Header = () => {
 
   return (
     <div>
-      <header className="header ">
-        <div className="nav-wrapper ">
-          <div className="nav nav-black">
-            <div className="nav nav-red">
-              <div className="nav nav-white">
-                <button className="nav-btn close-btn">
+      <header className="header">
+        <div className={`nav-wrapper ${mobileModal ? handleCloseBtn : ''}`}>
+          <div className={`nav nav-black ${isVisible ? 'visible' : ''}`}>
+            <div className={`nav nav-red ${isVisible ? 'visible' : ''}`}>
+              <div className={`nav nav-white ${isVisible ? 'visible' : ''}`}>
+                <button className="nav-btn close-btn" onClick={handleCloseBtn}>
                   <i className="fas fa-times text-blue-900"></i>
                 </button>
-                <a className="w-[180px]">
-                  <img className="" src={logo} alt="" />
-                </a>
-                <form className="mt-2 search-form-mobile">
+                <button className="nav-btn open-btn" onClick={handleOpenBtn}>
+                  <i className="fas fa-bars text-blue-900"></i>
+                </button>
+                <Link to="/" className="w-[180px]">
+                  <img className="w-[220px]" src={logo} alt="" />
+                </Link>
+                <form
+                  className="mt-2 search-form-mobile"
+                  onSubmit={handleSubmit}
+                >
                   <input
                     className="mobile-search"
                     id="searchInputMobile"
                     type="text"
-                    placeholder="Search..."
+                    placeholder="Search a movie or show"
+                    value={searchTerm}
+                    onChange={handleInputChange}
                   />
                 </form>
                 <ul className="list">
                   <li>
-                    <a>Movies</a>
+                    <Link to="/Movies">Movies</Link>
                   </li>
                   <li>
-                    <NavLink to="/tvshows">TV Shows</NavLink>
+                    <Link to="/Tvshows">TV Shows</Link>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => {
+                        handleOpen();
+                        handleCloseBtn();
+                      }}
+                    >
+                      Sign in
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => {
+                        handleOpen();
+                        handleCloseBtn();
+                      }}
+                    >
+                      Sign Up
+                    </button>
                   </li>
                 </ul>
-                <div>
-                  <button>Sign in</button>
-                </div>
-                <div>Sign Up</div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="container flex items-center justify-between header-sticky">
-          <button className="open-btn mobile-bar hidden">
+        <div className="container flex items-center justify-between header-sticky !mt-[40px]">
+          <button
+            className="open-btn mobile-bar hidden"
+            onClick={handleOpenBtn}
+          >
             <i className="fa-solid fa-bars"></i>
           </button>
           <div className="logo w-[180px] flex-shrink-0">

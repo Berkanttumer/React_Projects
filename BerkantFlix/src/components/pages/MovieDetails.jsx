@@ -65,8 +65,8 @@ const MovieDetails = () => {
 
   return (
     <>
-      <section className="details-page mt-[50px] mb-[200px] max-h-[700px] ">
-        <div className="movie-bg ">
+      <section className="details-page mt-[132px] mb-[200px] max-h-[700px] ">
+        <div className="movie-bg  ">
           {
             <img
               src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}

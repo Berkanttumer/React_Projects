@@ -17,15 +17,11 @@ const style = css`
   background-color: black;
   outline: none;
 
-  @media (max-width: 900px) {
-    width: 550px;
-    height: 550px;
-  }
-
   @media (max-width: 1200px) {
     width: 550px;
     height: 550px;
   }
+
   @media (max-width: 1500px) {
     width: 600px;
     height: 600px;
@@ -35,6 +31,11 @@ const style = css`
     width: 750px;
     height: 750px;
   }
+
+  @media (max-width: 400px) {
+    width: 380px;
+    height: 400px;
+  }
 `;
 
 const LoginModal = ({ handleOpen, handleClose, open }) => {
@@ -42,7 +43,7 @@ const LoginModal = ({ handleOpen, handleClose, open }) => {
   return (
     <div>
       <Modal
-        className="relative"
+        className="relative mt-40 md:mt-52 "
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"

@@ -10,7 +10,7 @@ const Slider = () => {
   const { popularMovies } = useContext(PopularContext);
 
   return (
-    <div className="mt-16 mr-10 ml-10">
+    <div className="mt-36 mr-10 ml-10">
       <Swiper
         spaceBetween={30}
         slidesPerView={1}

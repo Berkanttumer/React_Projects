@@ -8,16 +8,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const LoginTemplate = ({ selected, handleClose }) => {
-  // For password
-  const [passwordSignIn, setPasswordSignIn] = useState('');
-
-  const handlePasswordSign = () => {
-    setPasswordSignIn(passwordSignIn.type === 'password' ? 'text' : 'password');
-  };
-
-  // For confirm password
   const [password, setPassword] = useState('');
-  const [password2, setPassword2] = useState('');
 
   const handleLogin = async () => {
     try {
@@ -34,12 +25,6 @@ const LoginTemplate = ({ selected, handleClose }) => {
     if (password.length === 0) {
       toast.error('Passwords cannot be empty');
       return;
-      // } else if (password !== password2) {
-      //   toast.error('Passwords do not match');
-      //   return;
-      // } else if (password.length < 6) {
-      //   toast.error('Password must be at least 6 characters');
-      //   return;
     }
     try {
       await signUp(email, password);
@@ -54,10 +39,6 @@ const LoginTemplate = ({ selected, handleClose }) => {
   };
   const handlePassword = (e) => {
     setPassword(e.target.value);
-  };
-
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
   };
 
   const [email, setEmail] = useState('');
@@ -77,20 +58,10 @@ const LoginTemplate = ({ selected, handleClose }) => {
         <label className="mt-5">Password</label>
         <input
           onChange={handlePassword}
-          type={passwordSignIn}
+          type="password"
           className="rounded-md outline-none  p-1 text-gray-600 mt-2"
         />
-        {/* {passwordSignIn === 'password' ? (
-          <VisibilityOffIcon
-            onClick={handlePasswordSign}
-            className="text-black absolute top-[53%] right-0 hover:cursor-pointer"
-          />
-        ) : (
-          <VisibilityIcon
-            onClick={handlePasswordSign}
-            className="text-black absolute top-[53%] right-0 hover:cursor-pointer"
-          />
-        )} */}
+
         <button
           className="mt-12 bg-[#DC1A28] text-black font-bold p-1 rounded-md"
           onClick={handleLogin}
@@ -114,35 +85,12 @@ const LoginTemplate = ({ selected, handleClose }) => {
         <div className="flex flex-col mt-5 relative">
           <label>Password</label>
           <input
-            type={password}
+            type="password"
+            value={password}
             onChange={(e) => setPassword(e.target.value)}
             className="rounded-md outline-none p-1 text-gray-600 mt-2 "
           />
-          {/* {password === 'password' ? (
-            <VisibilityOffIcon className="text-black absolute top-[58%] right-0 hover:cursor-pointer" />
-          ) : (
-            <VisibilityIcon className="text-black absolute top-[58%] right-0 hover:cursor-pointer" />
-          )} */}
         </div>
-        {/* <div className="flex flex-col mt-5 relative">
-          <label className="">Confirm Password</label>
-          <input
-            type={password2}
-            onChange={(e) => setPassword2(e.target.value)}
-            className="rounded-md outline-none p-1 text-gray-600 mt-2 "
-          />
-          {password2 === 'password' ? (
-            <VisibilityOffIcon
-              onClick={handleClick2}
-              className="text-black absolute top-[58%] right-0 hover:cursor-pointer"
-            />
-          ) : (
-            <VisibilityIcon
-              onClick={handleClick2}
-              className="text-black absolute top-[58%] right-0 hover:cursor-pointer"
-            />
-          )}
-        </div> */}
 
         <button
           onClick={handleSubmit}

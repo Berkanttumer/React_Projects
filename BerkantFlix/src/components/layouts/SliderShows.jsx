@@ -4,7 +4,7 @@ import 'swiper/css';
 import 'swiper/swiper-bundle.css';
 
 import { Link } from 'react-router-dom';
-import { PopularContext } from '../../context/popular';
+import { PopularContext } from '../../context/PopularProvider';
 
 const SliderShows = () => {
   const { popularShows } = useContext(PopularContext);

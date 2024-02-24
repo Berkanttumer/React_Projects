@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import Card from './Card';
 
-import { PopularContext } from '../../context/popular';
+import { PopularContext } from '../../context/PopularProvider';
 
 const PopularMovies = () => {
   const { popularMovies } = useContext(PopularContext);

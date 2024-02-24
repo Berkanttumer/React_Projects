@@ -1,15 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import logo from '../../assets/e9e7a5a5bda4050781491119636d0b0f.png';
-import {
-  Link,
-  NavLink,
-  Navigate,
-  useLocation,
-  useNavigate,
-  useParams,
-  useSearchParams,
-} from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import LoginModal from './LoginModal';
 import { UserAuth } from '../../context/AuthContext';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -31,7 +23,7 @@ const Header = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
   const { user, logOut } = UserAuth();
-  console.log(user);
+
   const handleInputChange = (e) => {
     setSearchTerm(e.target.value);
   };
@@ -42,7 +34,7 @@ const Header = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(searchTerm);
+
     navigate(`/search?search-term=${searchTerm}`);
   };
 

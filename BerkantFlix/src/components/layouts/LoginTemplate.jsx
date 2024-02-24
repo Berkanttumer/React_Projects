@@ -15,7 +15,7 @@ const LoginTemplate = ({ selected, handleClose }) => {
       await logIn(email, password);
       handleClose();
     } catch (error) {
-      console.log(error);
+      toast.error('Invalid email or password');
     }
   };
 

@@ -1,5 +1,7 @@
 # Berkantflix
 
+https://berkantflix.vercel.app/
+
 A Responsive movie and Tv show app used with tmdb api.
 
 ### What did i use for this project:

@@ -5,16 +5,16 @@ import AndroidIcon from '../../assets/img/footer/google-play.png';
 
 const Footer = () => {
   return (
-    <footer className=" bg-black text-white gap-10 pb-10 pt-10 ">
+    <footer className=" bg-black text-white gap-10 ">
       <div className="subscribe mb-12 bg-white text-black pt-20 pb-20">
         <div className="sub-row container ">
           <div className="flex justify-between ">
             <div className="left-col">
               <div>
-                <h3 className="text-3xl max-w-[500px]">
+                <h3 className="text-3xl max-w-[500px] font-bold">
                   Get our emails for info on new items, sales and more.
                 </h3>
-                <p className="mt-1">
+                <p className="mt-1 text-sm">
                   We'll email you a voucher worth $10 off your first order over
                   $50.
                 </p>
@@ -29,7 +29,7 @@ const Footer = () => {
                     />
                     <button
                       href=""
-                      className="h-12 bg-white text-black border-1 border-black border-solid pl-6 pr-6"
+                      className="h-12 bg-black border-1 border-white border-solid pl-6 pr-6 text-white"
                     >
                       Subscribe
                     </button>
@@ -43,9 +43,10 @@ const Footer = () => {
             </div>
             <div className="right-col ">
               <div className="top-title">
-                <h3 className="text-3xl max-w-[500px]">
-                  Need help? <br /> <h3>(+90) 123 456 78 90</h3>
+                <h3 className="text-3xl max-w-[500px] font-bold">
+                  Need help? <br />
                 </h3>
+                <h3 className="text-3xl font-bold">(+90) 123 456 78 90</h3>
                 <p className="text-sm mt-1">We are available 8:00am – 7:00pm</p>
               </div>
 
@@ -53,7 +54,7 @@ const Footer = () => {
                 <img src={AppStoreIcon} alt="" />
                 <img src={AndroidIcon} alt="" />
               </div>
-              <p className="text-xs">
+              <p className="text-xs mt-2">
                 Shopping App: Try our View in Your Room feature, manage
                 registries and save payment info.
               </p>

@@ -24,9 +24,6 @@ path {
   height: 16px;
 }
 
-.MuiSvgIcon-root {
-}
-
 footer {
   margin-top: auto !important;
 }
@@ -43,4 +40,8 @@ footer {
 
 .links-col h3 {
   padding-bottom: 20px;
+}
+
+input::-webkit-input-placeholder {
+  font-size: 12px;
 }

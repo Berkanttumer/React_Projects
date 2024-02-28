@@ -1,12 +1,13 @@
-import { SwipeRight } from '@mui/icons-material';
 import React from 'react';
 import Swiper from '../layouts/Swiper';
+import Policy from '../layouts/Policy';
 
 const Home = () => {
   return (
-    <div className="container mt-52">
+    <>
       <Swiper />
-    </div>
+      <Policy />
+    </>
   );
 };
 

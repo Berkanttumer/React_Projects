@@ -29,7 +29,7 @@ const Footer = () => {
                     />
                     <button
                       href=""
-                      className="h-12 bg-black border-1 border-white border-solid pl-6 pr-6 text-white"
+                      className="h-12 bg-white text-black border-2 border-black border-solid pl-6 pr-6 "
                     >
                       Subscribe
                     </button>
@@ -69,7 +69,7 @@ const Footer = () => {
             <Link to="/" className="font-bold text-xl pb-5">
               LOGO
             </Link>
-            <p>
+            <p className="text-sm">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit,
               quasi blanditiis? Iste dicta fugiat delectus.
             </p>
@@ -77,7 +77,7 @@ const Footer = () => {
           </div>
           <div className="links-col flex gap-20 ml-20">
             <div>
-              <h3 className="font-bold text-xl">Information</h3>
+              <h3 className="font-bold">Information</h3>
               <ul className="flex flex-col gap-2">
                 <li>
                   <a href="">About us</a>
@@ -98,62 +98,62 @@ const Footer = () => {
             </div>
 
             <div>
-              <h3 className="font-bold text-xl">Information</h3>
+              <h3 className="font-bold ">Account</h3>
               <ul className="flex flex-col gap-2">
                 <li>
-                  <a href="">About us</a>
+                  <a href="">Dashboard</a>
                 </li>
                 <li>
-                  <a href="">Privarcy Policy</a>
+                  <a href="">My Orders</a>
                 </li>
                 <li>
-                  <a href="">Returns Policy</a>
+                  <a href="">My Wishlist</a>
                 </li>
                 <li>
-                  <a href="">Shipping Policy</a>
+                  <a href="">Account details</a>
                 </li>
                 <li>
-                  <a href="">Dropshipping</a>
+                  <a href="">Track My Orders</a>
                 </li>
               </ul>
             </div>
             <div>
-              <h3 className="font-bold text-xl">Information</h3>
+              <h3 className="font-bold">Shop</h3>
               <ul className="flex flex-col gap-2">
                 <li>
-                  <a href="">About us</a>
+                  <a href="">Affiliate</a>
                 </li>
                 <li>
-                  <a href="">Privarcy Policy</a>
+                  <a href="">Bestsellers</a>
                 </li>
                 <li>
-                  <a href="">Returns Policy</a>
+                  <a href="">Discount</a>
                 </li>
                 <li>
-                  <a href="">Shipping Policy</a>
+                  <a href="">Latest Products</a>
                 </li>
                 <li>
-                  <a href="">Dropshipping</a>
+                  <a href="">Sale Products</a>
                 </li>
               </ul>
             </div>
             <div>
-              <h3 className="font-bold text-xl">Information</h3>
+              <h3 className="font-bold ">Categories</h3>
               <ul className="flex flex-col gap-2">
                 <li>
-                  <a href="">About us</a>
+                  <a href="">Women</a>
                 </li>
                 <li>
-                  <a href="">Privarcy Policy</a>
+                  <a href="">Men</a>
                 </li>
                 <li>
-                  <a href="">Returns Policy</a>
+                  <a href="">Bags</a>
                 </li>
                 <li>
-                  <a href="">Shipping Policy</a>
+                  <a href="">Outerwear</a>
                 </li>
                 <li>
-                  <a href="">Dropshipping</a>
+                  <a href="">Shoes</a>
                 </li>
               </ul>
             </div>

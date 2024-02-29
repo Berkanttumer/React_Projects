@@ -34,23 +34,28 @@ footer {
   min-height: 100vh;
 }
 
+/* Products */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+/* Blogs */
+
+.blog-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
 /* Brands */
 .brand-list {
-  border: 1px solid #dee0ea;
   padding: 30px 5px;
 }
 
 .brand-list li a:hover {
   opacity: 0.4;
   transition: 0.2 ease opacity;
-}
-
-.links-col a {
-  font-size: 15px;
-}
-
-.links-col h3 {
-  padding-bottom: 20px;
 }
 
 input::-webkit-input-placeholder {
@@ -65,4 +70,16 @@ input::-webkit-input-placeholder {
   align-items: center;
   justify-content: center;
   background-attachment: fixed;
+}
+
+/* Footer */
+
+.links-col a {
+  font-size: 14px;
+}
+
+.links-col h3 {
+  padding-bottom: 20px;
+  font-size: 15px;
+  font: bold;
 }

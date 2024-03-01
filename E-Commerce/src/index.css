@@ -34,9 +34,34 @@ footer {
   min-height: 100vh;
 }
 
-/* Products */
-.product-list div {
+/* MultiCampaigns */
+
+.item-1:nth-child(1) {
+  background: url('assets/img/campaigns/banner1.png') no-repeat;
+  background-position: center;
+  padding: 70px 35px;
+  background-size: cover;
 }
+.item-2:nth-child(2) {
+  background: url('assets/img/campaigns/banner2.png') no-repeat;
+  background-position: center;
+  padding: 70px 35px;
+  background-size: cover;
+}
+.item-3:nth-child(1) {
+  background: url('assets/img/campaigns/banner3.png') no-repeat;
+  background-position: center;
+  padding: 70px 35px;
+  background-size: cover;
+}
+.item-4:nth-child(2) {
+  background: url('assets/img/campaigns/banner4.png') no-repeat;
+  background-position: center;
+  padding: 70px 35px;
+  background-size: cover;
+}
+
+/* Products */
 
 /* Blogs */
 

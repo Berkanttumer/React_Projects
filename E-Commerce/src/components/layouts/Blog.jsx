@@ -5,19 +5,21 @@ import Blog3 from '../../assets/img/blogs/blog3.jpg';
 
 const Blog = () => {
   return (
-    <section className="blog mt-12">
+    <section className="blog">
       <div className="text-center mb-9">
         <h2 className="text-3xl mb-1 font-bold">From Our Blog</h2>
         <h3>Summer Collection New Morden Design</h3>
       </div>
       <div className="container">
         <ul className="blog-list gap-12">
-          <li className="item-1 ">
+          <li>
             <a href="">
               <img src={Blog1} alt="" />
             </a>
             <div className=" flex flex-col pt-10 pb-10 items-center gap-3 ">
-              <span className="text-sm">25 Feb, 2021 - 0 Comments</span>
+              <span className="text-sm text-gray-600">
+                25 Feb, 2021 - 0 Comments
+              </span>
               <a href="" className="text-2xl">
                 Aliquam hendrerit mi metus
               </a>
@@ -28,12 +30,14 @@ const Blog = () => {
               </div>
             </div>
           </li>
-          <li className="item-2 ">
+          <li>
             <a href="">
               <img src={Blog2} alt="" />
             </a>
             <div className="flex flex-col pt-10 pb-10 items-center gap-3">
-              <span className="text-sm">25 Feb, 2021 - 0 Comments</span>
+              <span className="text-sm text-gray-600">
+                25 Feb, 2021 - 0 Comments
+              </span>
               <a href="" className="text-2xl">
                 Aliquam hendrerit mi metus
               </a>
@@ -44,12 +48,14 @@ const Blog = () => {
               </div>
             </div>
           </li>
-          <li className="item-3 ">
+          <li>
             <a href="">
               <img src={Blog3} alt="" />
             </a>
             <div className="flex flex-col pt-10 pb-10 items-center gap-3">
-              <span className="text-sm">25 Feb, 2021 - 0 Comments</span>
+              <span className="text-sm text-gray-600">
+                25 Feb, 2021 - 0 Comments
+              </span>
               <a href="" className="text-2xl">
                 Aliquam hendrerit mi metus
               </a>

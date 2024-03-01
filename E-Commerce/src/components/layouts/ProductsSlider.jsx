@@ -6,12 +6,16 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/swiper-bundle.css';
 
-const Products = () => {
+const ProductsSlider = ({ type }) => {
   return (
-    <section className="products">
+    <section
+      className={`mb-16 ${type == 'products' ? 'products' : 'featured'}`}
+    >
       <div className="container">
         <div className="top-title flex items-center justify-center flex-col">
-          <h3 className="text-3xl font-bold mb-1">New Arrivals</h3>
+          <h3 className="text-3xl font-bold mb-1">
+            {type == 'products' ? 'New Arrivals ' : 'Featured Products'}
+          </h3>
           <p>Summer Collection New Morden Design</p>
         </div>
         <div>
@@ -80,4 +84,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default ProductsSlider;

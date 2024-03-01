@@ -5,7 +5,7 @@ import Blog3 from '../../assets/img/blogs/blog3.jpg';
 
 const Blog = () => {
   return (
-    <section className="blog">
+    <section className="blog mt-12">
       <div className="text-center mb-9">
         <h2 className="text-3xl mb-1 font-bold">From Our Blog</h2>
         <h3>Summer Collection New Morden Design</h3>

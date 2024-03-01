@@ -41,10 +41,13 @@ const Products = () => {
               {products.map((data) => (
                 <SwiperSlide key={data.id}>
                   <li className="flex flex-col items-center">
-                    <div>
+                    <div className="relative">
                       <a href="">
                         <img src={data.img.thumbs[0]} alt="" />
                       </a>
+                      <div className="rounded-full absolute top-2 right-2  bg-red-700 w-9 h-9 flex items-center justify-center">
+                        <span className=" text-xs ">%{data.discount}</span>
+                      </div>
                     </div>
                     <div className="product-info pt-5 items-center flex flex-col">
                       <div>

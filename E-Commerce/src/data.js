@@ -35,8 +35,8 @@ export const products = [
     id: 3,
     title: 'Blush Beanie',
     price: {
-      oldPrice: 165.0,
-      newPrice: 38.0,
+      oldPrice: 265.0,
+      newPrice: 138.0,
     },
     discount: 90,
     img: {
@@ -54,7 +54,7 @@ export const products = [
       oldPrice: 165.0,
       newPrice: 48.0,
     },
-    discount: 40,
+    discount: 20,
     img: {
       thumbs: [
         'src/assets/img/products/product4/1.png',
@@ -67,10 +67,10 @@ export const products = [
     id: 5,
     title: 'La Bohème Rose Gold',
     price: {
-      oldPrice: 165.0,
-      newPrice: 48.0,
+      oldPrice: 125.0,
+      newPrice: 70.0,
     },
-    discount: 40,
+    discount: 17,
     img: {
       thumbs: [
         'src/assets/img/products/product5/1.png',

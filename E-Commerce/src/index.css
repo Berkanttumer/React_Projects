@@ -81,6 +81,22 @@ footer {
 }
 
 /* Products */
+.products-img .image1:hover {
+  visibility: hidden;
+}
+
+.products-img img {
+  transition: 0.3s ease-in-out all;
+}
+.products-img:hover .image2 {
+  visibility: visible;
+}
+
+.products-img .image2 {
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+}
 
 /* Blogs */
 

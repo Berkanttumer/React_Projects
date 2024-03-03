@@ -45,9 +45,18 @@ const ProductsSlider = ({ type }) => {
               {products.map((data) => (
                 <SwiperSlide key={data.id}>
                   <li className="flex flex-col items-center">
-                    <div className="relative">
+                    <div className="products-img relative">
                       <a href="">
-                        <img src={data.img.thumbs[0]} alt="" />
+                        <img
+                          src={data.img.thumbs[0]}
+                          alt=""
+                          className="image1"
+                        />
+                        <img
+                          src={data.img.thumbs[1]}
+                          alt=""
+                          className="image2"
+                        />
                       </a>
                       <div className="rounded-full absolute top-2 right-2  bg-red-700 w-9 h-9 flex items-center justify-center">
                         <span className=" text-xs ">%{data.discount}</span>

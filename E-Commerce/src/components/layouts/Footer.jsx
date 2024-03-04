@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import AppStoreIcon from '../../assets/img/footer/app-store.png';
 import AndroidIcon from '../../assets/img/footer/google-play.png';
+import cards from '../../assets/img/footer/cards.png';
 
 const Footer = () => {
   return (
@@ -63,7 +64,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="pt-14 pb-14">
+      <div className="pt-14 pb-14  border-b border-solid border-gray-500">
         <div className="flex container ">
           <div className="flex flex-col flex-[3]">
             <Link to="/" className="font-bold text-xl pb-5">
@@ -154,6 +155,34 @@ const Footer = () => {
                 </li>
                 <li>
                   <a href="">Shoes</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="copyright mt-10 mb-10">
+        <div className="container">
+          <div className="flex gap-5 items-center  ">
+            <div>
+              <p className="text-xs">
+                Copyright 2022 © E-Commerce Theme. All right reserved. Powered
+                by Berkant Tümer.
+              </p>
+            </div>
+            <a href="">
+              <img src={cards} alt="" />
+            </a>
+            <div className="ml-auto">
+              <ul className="copyright-links flex gap-2">
+                <li className="border-1 border-gray-50 border-r border-solid pr-2">
+                  <a href="">Privacy Policy</a>
+                </li>
+                <li className="border-1 border-gray-50 border-r border-solid pr-2">
+                  <a href="">Terms and Conditions</a>
+                </li>
+                <li>
+                  <a href="">Returns Policy</a>
                 </li>
               </ul>
             </div>

@@ -18,8 +18,8 @@ const Header = () => {
             HOME <ExpandMoreIcon sx={{ color: 'gray' }} />
           </a>
         </li>
-        <li>
-          <a className="flex items-center ">
+        <li className="shop ">
+          <a href="#" className="flex items-center ">
             SHOP <ExpandMoreIcon sx={{ color: 'gray' }} />
           </a>
           <div className="megamenu left-0 top-full w-full flex justify-center absolute z-50 mt-12">
@@ -80,11 +80,15 @@ const Header = () => {
         </li>
       </ul>
       <div className="flex gap-3 items-center ">
-        <PermIdentityIcon /> <SearchIcon />
+        <PermIdentityIcon />
+        <SearchIcon />
         <a href="">
           <FavoriteBorderIcon />
         </a>
-        <LocalMallOutlinedIcon />
+        <LocalMallOutlinedIcon className="relative" />
+        <div className="absolute -top-1 -right-1 w-4 h-4 rounded-full flex items-center justify-center bg-blue-700">
+          <span className="text-[10px] font-bold ">0</span>
+        </div>
       </div>
     </header>
   );

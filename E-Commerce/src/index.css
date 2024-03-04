@@ -15,6 +15,15 @@ body {
 .megamenu-links {
   column-gap: 50px;
 }
+
+.megamenu {
+  visibility: hidden;
+}
+
+.shop:hover .megamenu {
+  visibility: visible !important;
+}
+
 .img11 img {
   height: 600px;
   width: 100%;
@@ -174,4 +183,8 @@ input::-webkit-input-placeholder {
   padding-bottom: 20px;
   font-size: 15px;
   font: bold;
+}
+
+.copyright-links a {
+  font-size: 12px;
 }

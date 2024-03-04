@@ -6,7 +6,7 @@ import CreditCardIcon from '@mui/icons-material/CreditCard';
 
 const Policy = () => {
   return (
-    <section className="border-t mt-10 ">
+    <section className="border-t border-gray-500 mt-10 ">
       <div className="container">
         <ul className="pt-6 pb-6 flex justify-between">
           <li className="delivery flex gap-2 items-center">

@@ -8,6 +8,13 @@ body {
   font-family: 'Jost', sans-serif;
 }
 
+.megamenu > div:first-child {
+  column-gap: 10px;
+}
+
+.megamenu-links {
+  column-gap: 50px;
+}
 .img11 img {
   height: 600px;
   width: 100%;
@@ -25,6 +32,30 @@ body {
 
 .slider-text a {
   pointer-events: auto;
+}
+
+.categories-list li {
+  width: 175px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+}
+.categories-list img {
+  width: 150px;
+  height: 150px;
+}
+
+.categories-list li a span {
+  margin-top: 10px;
+  display: block;
+  text-align: center;
+}
+.categories-list img {
+  transition: 0.3s ease-in-out all;
+}
+
+.categories-list img:hover {
+  transform: scale(1.1);
 }
 
 .container {
@@ -54,6 +85,10 @@ footer {
 }
 
 /* MultiCampaigns */
+
+.multicampaign a {
+  white-space: nowrap;
+}
 
 .item-1:nth-child(1) {
   background: url('assets/img/campaigns/banner1.png') no-repeat;

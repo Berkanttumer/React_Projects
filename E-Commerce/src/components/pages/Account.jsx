@@ -79,12 +79,19 @@ const Account = () => {
                     <label>E-Mail *</label>
                     <input type="text" className="border-black border " />
                   </div>
-                  <div className="gap-1 flex flex-col">
+                  <div className="gap-1 flex flex-col mb-2">
                     <label>Password *</label>
                     <input type="text" className="border-black border " />
                   </div>
+                  <div className="flex justify-center w-[90%]">
+                    <span className="text-xs">
+                      Your personal data will be used to support your experience
+                      throughout this website, to manage access to your account,
+                      and for other purposes described in our privacy policy.
+                    </span>
+                  </div>
                 </div>
-                <div className="mt-14 flex justify-center">
+                <div className="mt-5 flex justify-center">
                   <button className="text-white bg-red-700 pt-1 pb-1 pl-9 pr-9">
                     Sign Up
                   </button>

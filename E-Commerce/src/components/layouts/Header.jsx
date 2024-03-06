@@ -19,9 +19,9 @@ const Header = () => {
           </a>
         </li>
         <li className="shop ">
-          <a href="#" className="flex items-center ">
+          <Link to="/Shop" className="flex items-center ">
             SHOP <ExpandMoreIcon sx={{ color: 'gray' }} />
-          </a>
+          </Link>
           <div className="megamenu left-0 top-full w-full flex justify-center absolute z-50 mt-12">
             <div className=" flex justify-between bg-white text-black p-5  ">
               <div className="megamenu-links flex ">
@@ -71,7 +71,7 @@ const Header = () => {
           </div>
         </li>
         <li>
-          <a>BLOG</a>
+          <Link to="/Blog">BLOG</Link>
         </li>
         <li>
           <Link to="/Contact" className="ml-4">
@@ -80,7 +80,10 @@ const Header = () => {
         </li>
       </ul>
       <div className="flex gap-3 items-center ">
-        <PermIdentityIcon />
+        <Link to="/Account">
+          <PermIdentityIcon />
+        </Link>
+
         <SearchIcon />
         <a href="">
           <FavoriteBorderIcon />

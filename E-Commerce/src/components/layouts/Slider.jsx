@@ -11,7 +11,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 const Slider = () => {
   let swiper;
   return (
-    <section className="slider mt-12 mb-12 relative">
+    <section className="slider mt-8 mb-12 relative">
       <Swiper
         slidesPerView={1}
         freeMode={true}

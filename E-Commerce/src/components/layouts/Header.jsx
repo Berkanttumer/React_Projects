@@ -5,7 +5,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MegaMenuImage from '../../assets/img/mega-menu.jpg';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 const Header = () => {
   return (
     <header className="container flex items-center justify-between !mt-8 relative">
@@ -14,15 +14,15 @@ const Header = () => {
       </Link>
       <ul className="flex gap-3 items-center ">
         <li>
-          <a className="flex items-center">
+          <NavLink to="/" className="flex items-center ">
             HOME <ExpandMoreIcon sx={{ color: 'gray' }} />
-          </a>
+          </NavLink>
         </li>
         <li className="shop ">
-          <Link to="/Shop" className="flex items-center ">
+          <NavLink to="/Shop" href="#" className="flex items-center ">
             SHOP <ExpandMoreIcon sx={{ color: 'gray' }} />
-          </Link>
-          <div className="megamenu left-0 top-full w-full flex justify-center absolute z-50 mt-12">
+          </NavLink>
+          <div className="megamenu left-0 top-full w-full flex justify-center absolute z-50 mt-8">
             <div className=" flex justify-between bg-white text-black p-5  ">
               <div className="megamenu-links flex ">
                 <div>
@@ -56,7 +56,7 @@ const Header = () => {
                   </ul>
                 </div>
               </div>
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-3 ml-5">
                 <img src={MegaMenuImage} alt="" />
                 <h3>JOIN THE LAYERING GANG</h3>
                 <span>Suspendisse faucibus nunc et pellentesque</span>
@@ -71,12 +71,12 @@ const Header = () => {
           </div>
         </li>
         <li>
-          <Link to="/Blog">BLOG</Link>
+          <NavLink to="/Blog">BLOG</NavLink>
         </li>
         <li>
-          <Link to="/Contact" className="ml-4">
+          <NavLink to="/Contact" className="ml-4">
             CONTACT
-          </Link>
+          </NavLink>
         </li>
       </ul>
       <div className="flex gap-3 items-center ">

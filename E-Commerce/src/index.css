@@ -6,10 +6,15 @@ body {
   background-color: black;
   color: white;
   font-family: 'Jost', sans-serif;
+  padding-right: 0px !important;
 }
 
-.megamenu > div:first-child {
-  column-gap: 10px;
+.active {
+  border-bottom: 1px solid #1d4ed8;
+}
+
+input::placeholder {
+  font-size: 14px !important;
 }
 
 .megamenu-links {
@@ -73,6 +78,13 @@ body {
   display: flex;
   flex-direction: column;
   flex-basis: calc(50% - 10px);
+}
+
+.form-contact input {
+  width: 600px;
+  padding: 7px 10px;
+  color: black;
+  outline: none;
 }
 
 .container {
@@ -182,12 +194,6 @@ input::-webkit-input-placeholder {
 }
 
 /* Contact */
-.form-contact input {
-  width: 600px;
-  padding: 7px 10px;
-  color: black;
-  outline: none;
-}
 
 /* Account */
 .form div {

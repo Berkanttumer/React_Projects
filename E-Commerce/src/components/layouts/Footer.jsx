@@ -42,7 +42,7 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            <div className="right-col ">
+            <div className="right-col">
               <div className="top-title">
                 <h3 className="text-3xl max-w-[500px] font-bold">
                   Need help? <br />
@@ -64,8 +64,8 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="pt-14 pb-14  border-b border-solid border-gray-500">
-        <div className="flex container ">
+      <div className="pt-14 pb-14  border-b border-solid border-gray-500 ">
+        <div className="flex container flex-wrap">
           <div className="flex flex-col flex-[3]">
             <Link to="/" className="font-bold text-xl pb-5">
               LOGO

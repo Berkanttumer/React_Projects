@@ -47,7 +47,6 @@ const Home = () => {
       <Blog type="blogForHome" />
       <Brands />
       <Campaign />
-      <Policy />
     </>
   );
 };

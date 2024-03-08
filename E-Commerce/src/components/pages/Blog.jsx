@@ -73,13 +73,13 @@ const Blog = ({ type }) => {
       </div>
     </section>
   ) : (
-    <section className="blog mt-12 mb-12">
+    <section className="blog mt-12 mb-12 ">
       <div className="text-center mb-9">
         <h2 className="text-3xl mb-1 font-bold">From Our Blog</h2>
         <h3>Summer Collection New Morden Design</h3>
       </div>
-      <div className="container">
-        <ul className="blog-list gap-12">
+      <div className="container ">
+        <ul className="blog-list gap-12 ">
           <li>
             <a href="">
               <img src={Blog1} alt="" />

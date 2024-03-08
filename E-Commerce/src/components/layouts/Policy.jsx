@@ -8,7 +8,7 @@ const Policy = () => {
   return (
     <section className="border-t border-gray-500 mt-10 ">
       <div className="container">
-        <ul className="pt-6 pb-6 flex justify-between">
+        <ul className="pt-6 pb-6 flex justify-between flex-wrap">
           <li className="delivery flex gap-2 items-center">
             <LocalShippingIcon sx={{ fontSize: 50 }} />
             <div className="delivery-text flex flex-col">

@@ -5,6 +5,7 @@ import { products } from '../../data';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/swiper-bundle.css';
+import { Link } from 'react-router-dom';
 
 const ProductsSlider = ({ type }) => {
   return (
@@ -46,7 +47,7 @@ const ProductsSlider = ({ type }) => {
                 <SwiperSlide key={data.id}>
                   <li className="flex flex-col items-center">
                     <div className="products-img relative">
-                      <a href="">
+                      <Link to={`/Details/${data.id}`}>
                         <img
                           src={data.img.thumbs[0]}
                           alt=""
@@ -57,7 +58,7 @@ const ProductsSlider = ({ type }) => {
                           alt=""
                           className="image2"
                         />
-                      </a>
+                      </Link>
                       <div className="rounded-full absolute top-2 right-2  bg-red-700 w-9 h-9 flex items-center justify-center">
                         <span className=" text-xs ">%{data.discount}</span>
                       </div>

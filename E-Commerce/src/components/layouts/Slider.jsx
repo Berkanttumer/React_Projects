@@ -36,13 +36,13 @@ const Slider = () => {
 
         <button
           onClick={() => swiper.slidePrev()}
-          className="absolute bg-white top-[50%] left-12 z-50 w-14 h-14 rounded-full flex items-center justify-center hover:bg-blue-600"
+          className="slider-button absolute bg-white top-[50%] left-12 z-50 w-14 h-14 rounded-full flex items-center justify-center hover:bg-blue-600"
         >
           <ArrowBackIosNewIcon sx={{ color: 'gray' }} />
         </button>
         <button
           onClick={() => swiper.slideNext()}
-          className="absolute bg-white top-[50%] right-12  w-14 h-14 rounded-full z-50 flex items-center justify-center hover:bg-blue-600"
+          className="slider-button absolute bg-white top-[50%] right-12  w-14 h-14 rounded-full z-50 flex items-center justify-center hover:bg-blue-600"
         >
           <ArrowForwardIosIcon sx={{ color: 'gray' }} />
         </button>

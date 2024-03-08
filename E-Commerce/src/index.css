@@ -7,6 +7,37 @@ body {
   color: white;
   font-family: 'Jost', sans-serif;
   padding-right: 0px !important;
+  overflow-x: hidden;
+}
+
+/* Details */
+.details ul li:not(:last-child):after {
+  content: '/';
+
+  margin-left: 5px;
+}
+
+/* Slider */
+
+.slider-text {
+  @media (max-width: 400px) {
+    left: 50px;
+  }
+}
+.slider-button {
+  @media (max-width: 400px) {
+    display: none;
+  }
+}
+
+/* Header */
+
+header ul li {
+  letter-spacing: 1px;
+}
+
+header ul li .megamenu * {
+  letter-spacing: normal;
 }
 
 .active {
@@ -101,10 +132,6 @@ input::placeholder {
 path {
   width: 16px;
   height: 16px;
-}
-
-footer {
-  margin-top: auto !important;
 }
 
 .app {
@@ -210,6 +237,10 @@ input::-webkit-input-placeholder {
 
 /* Footer */
 
+footer {
+  margin-top: auto !important;
+}
+
 .links-col a {
   font-size: 14px;
 }
@@ -222,4 +253,28 @@ input::-webkit-input-placeholder {
 
 .copyright-links a {
   font-size: 12px;
+}
+
+.sub-row > div {
+  @media (max-width: 400px) {
+    flex-direction: column;
+  }
+}
+
+.left-col p:last-child {
+  @media (max-width: 400px) {
+  }
+}
+
+.right-col {
+  @media (max-width: 400px) {
+    margin-top: 50px;
+  }
+}
+
+.links-col {
+  @media (max-width: 400px) {
+    margin-left: 15px;
+    margin-top: 50px;
+  }
 }

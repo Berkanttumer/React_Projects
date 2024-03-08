@@ -11,38 +11,48 @@ const ModalPage = ({ handleOpen, open, handleClose }) => {
     left: 50%;
     transform: translate(-50%, -50%);
     height: 440px;
+    width: 800px;
     background-color: black;
     outline: none;
 
-    @media (max-width: 900px) {
-      width: 800px;
+    // @media (max-width: 900px) {
+    //   width: 550px;
+    //   height: 440px;
+    // }
+
+    // @media (max-width: 1200px) {
+    //   width: 550px;
+    //   height: 440px;
+    // }
+    // @media (max-width: 1500px) {
+    //   width: 600px;
+    //   height: 440px;
+    // }
+
+    @media (max-width: 400px) {
+      width: 350px;
       height: 450px;
-    }
-
-    @media (max-width: 1200px) {
-      width: 800px;
-      height: 350px;
-    }
-    @media (max-width: 1500px) {
-      width: 800px;
-      height: 300px;
-    }
-
-    @media (max-width: 1900px) {
-      width: 800px;
-      height: 440px;
+      top: 50%;
+      left: 50%;
+      .modal-wrapper {
+        display: flex;
+        flex-direction: column;
+      }
+      img {
+        display: none;
+      }
     }
   `;
   return (
     <Modal
-      className="flex"
+      className=" flex"
       open={open}
       onClose={handleClose}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
-        <div className="flex">
+        <div className="modal-wrapper flex ">
           <img src={ModalDialog} />
           <div className="flex flex-col mt-24 items-center ml-12 mr-12 text-center">
             <Typography

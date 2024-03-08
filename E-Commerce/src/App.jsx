@@ -6,13 +6,16 @@ import Notice from './components/layouts/Notice';
 import Footer from './components/layouts/Footer';
 import Blog from './components/pages/Blog';
 import Account from './components/pages/Account';
-import Brands from './components/layouts/Brands';
+
 import Policy from './components/layouts/Policy';
 import Shop from './components/pages/Shop';
+import Details from './components/pages/Details';
+import ScrollGoTop from './components/ScrollGoTop';
 
 function App() {
   return (
     <div className="app">
+      <ScrollGoTop />
       <Notice />
       <Header />
       <Routes>
@@ -21,6 +24,7 @@ function App() {
         <Route path="/Contact" element={<Contact />} />
         <Route path="/Account" element={<Account />} />
         <Route path="/Shop" element={<Shop />} />
+        <Route path="/Details/:id" element={<Details />} />
       </Routes>
       <Policy />
       <Footer />

@@ -10,10 +10,64 @@ body {
   overflow-x: hidden;
 }
 
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  opacity: 1;
+}
+
+.details-img img:hover {
+}
+
+.colors div:hover {
+  cursor: pointer;
+}
+
+.active-size {
+  background-color: #e51414;
+}
+
+.active-color {
+  border: 1px solid white;
+}
+
+.variations .colors > div:hover {
+  border: 1px solid white;
+}
+
+input[type='radio'] {
+  appearance: none;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+.values-list span {
+  cursor: pointer;
+  padding: 8px 40px;
+  font-size: 14px;
+  text-align: center;
+  border: 1px solid white;
+  transition: 0.2s ease-in-out all;
+  flex: 1;
+}
+
+.values-list span:hover {
+  background-color: #e51414;
+}
+
+.swiper-details .swiper-wrapper {
+  left: -34%;
+}
+
+.swiper-details .swiper-wrapper .swiper-slide:hover {
+  border-color: #1d4ed8;
+  cursor: pointer;
+}
+
 /* Details */
 .details ul li:not(:last-child):after {
   content: '/';
-
   margin-left: 5px;
 }
 

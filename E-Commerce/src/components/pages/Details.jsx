@@ -238,7 +238,7 @@ const Details = () => {
                     className={
                       addToCart
                         ? 'flex  items-center justify-center text-center bg-blue-500 opacity-45 w-full  text-sm h-12'
-                        : ' flex  items-center justify-center bg-blue-500 w-full text-sm hover:bg-white hover:text-[#1d4ed8] h-12'
+                        : 'transition-btn flex  items-center justify-center bg-blue-500 w-full text-sm hover:bg-white hover:text-[#1d4ed8] h-12'
                     }
                     onClick={handleCart}
                     disabled={addToCart}
@@ -437,6 +437,106 @@ const Details = () => {
                         </div>
                       </li>
                     </ol>
+                    <div className="add-comment mt-6">
+                      <form className="flex flex-col gap-5">
+                        <h2 className="text-xl border-b pb-4">Add a review</h2>
+                        <div className="">
+                          <span>
+                            Your rating <span className="text-red-600">*</span>
+                          </span>
+                          <div className="flex mt-2">
+                            <a
+                              href=""
+                              className="star-icons border-r pr-2 mr-2"
+                            >
+                              <StarIcon
+                                sx={{ fontSize: 15, color: 'gray' }}
+                                className="star-icon"
+                              />
+                            </a>
+                            <a className="star-icons border-r pr-2 mr-2 ">
+                              <StarIcon
+                                sx={{ fontSize: 15, color: 'gray' }}
+                                className="star-icon"
+                              />
+                              <StarIcon
+                                sx={{ fontSize: 15, color: 'gray' }}
+                                className="star-icon"
+                              />
+                            </a>
+                            <a className="star-icons border-r pr-2 mr-2 ">
+                              <StarIcon
+                                sx={{ fontSize: 15, color: 'gray' }}
+                                className="star-icon"
+                              />
+                              <StarIcon
+                                sx={{ fontSize: 15, color: 'gray' }}
+                                className="star-icon"
+                              />
+                              <StarIcon
+                                sx={{ fontSize: 15, color: 'gray' }}
+                                className="star-icon"
+                              />
+                            </a>
+                            <a className="star-icons border-r pr-2 mr-2 ">
+                              <StarIcon
+                                sx={{ fontSize: 15, color: 'gray' }}
+                                className="star-icon"
+                              />
+                              <StarIcon
+                                sx={{ fontSize: 15, color: 'gray' }}
+                                className="star-icon"
+                              />
+                              <StarIcon
+                                sx={{ fontSize: 15, color: 'gray' }}
+                                className="star-icon"
+                              />
+                              <StarIcon
+                                sx={{ fontSize: 15, color: 'gray' }}
+                                className="star-icon"
+                              />
+                            </a>
+                            <a className="star-icons  ">
+                              <StarIcon
+                                sx={{ fontSize: 15, color: 'gray' }}
+                                className="star-icon"
+                              />
+                              <StarIcon
+                                sx={{ fontSize: 15, color: 'gray' }}
+                                className="star-icon"
+                              />
+                              <StarIcon
+                                sx={{ fontSize: 15, color: 'gray' }}
+                                className="star-icon"
+                              />
+                              <StarIcon
+                                sx={{ fontSize: 15, color: 'gray' }}
+                                className="star-icon"
+                              />
+                              <StarIcon
+                                sx={{ fontSize: 15, color: 'gray' }}
+                                className="star-icon"
+                              />
+                            </a>
+                          </div>
+                        </div>
+                        <div className="flex flex-col">
+                          <span>
+                            Your review <span className="text-red-600">*</span>
+                          </span>
+                          <textarea
+                            cols="30"
+                            rows="10"
+                            className="mt-2 outline-none text-black p-2"
+                          ></textarea>
+                        </div>
+                      </form>
+                    </div>
+                    <div className="mt-12">
+                      <button className="transition-btn bg-white text-black pt-2 pb-2 pl-6 pr-6 hover:bg-[#1d4ed8] hover:text-white ">
+                        Sign up for comment
+                      </button>
+                    </div>
                   </div>
                 )}
               </div>

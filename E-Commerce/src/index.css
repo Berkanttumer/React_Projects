@@ -65,6 +65,9 @@ button:disabled {
 .swiper-details .swiper-wrapper {
   left: -34%;
 }
+.star-icons:hover .star-icon {
+  color: #ffff00;
+}
 
 .swiper-details .swiper-wrapper .swiper-slide:hover {
   border-color: #1d4ed8;
@@ -75,7 +78,8 @@ button:disabled {
   cursor: pointer;
 }
 
-.information-table {
+.transition-btn {
+  transition: 0.2s ease-in-out all;
 }
 
 /* Slider */

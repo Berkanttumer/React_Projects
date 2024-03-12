@@ -13,31 +13,9 @@ import Categories from '../layouts/Categories';
 import ModalPage from '../layouts/ModalPage';
 
 const Home = () => {
-  const [openModal, setOpenModal] = useState(false);
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setOpenModal(true);
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, []);
-  const handleOpen = () => {};
-  const handleOpenModal = () => {
-    setOpenModal(true);
-  };
-  const handleClose = () => {
-    setOpenModal(false);
-  };
-
   return (
     <>
-      {openModal && (
-        <ModalPage
-          handleOpen={handleOpen}
-          open={openModal}
-          handleClose={handleClose}
-        />
-      )}
+      <ModalPage />
 
       <Slider />
       <Categories />

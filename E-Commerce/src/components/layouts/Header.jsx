@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import SearchIcon from '@mui/icons-material/Search';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -6,7 +6,10 @@ import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MegaMenuImage from '../../assets/img/mega-menu.jpg';
 import { Link, NavLink } from 'react-router-dom';
+import { ModalContext } from '../../ContextAPI/ModalProvider';
 const Header = () => {
+  const { openSearch, handleOpenSearch } = useContext(ModalContext);
+
   return (
     <header className="container flex items-center justify-between !mt-8 relative">
       <Link to="/" className="font-bold text-3xl">
@@ -84,11 +87,18 @@ const Header = () => {
           <PermIdentityIcon />
         </Link>
 
-        <SearchIcon />
+        <Link>
+          <SearchIcon onClick={handleOpenSearch} />
+        </Link>
+
         <a href="">
           <FavoriteBorderIcon />
         </a>
-        <LocalMallOutlinedIcon className="relative" />
+
+        <Link to="/Cart">
+          <LocalMallOutlinedIcon className="relative" />
+        </Link>
+
         <div className="absolute -top-1 -right-1 w-4 h-4 rounded-full flex items-center justify-center bg-blue-700">
           <span className="text-[10px] font-bold ">0</span>
         </div>

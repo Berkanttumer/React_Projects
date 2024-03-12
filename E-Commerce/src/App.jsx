@@ -11,6 +11,8 @@ import Policy from './components/layouts/Policy';
 import Shop from './components/pages/Shop';
 import Details from './components/pages/Details';
 import ScrollGoTop from './components/ScrollGoTop';
+import Cart from './components/pages/Cart';
+import SearchModal from './components/layouts/SearchModal';
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
       <ScrollGoTop />
       <Notice />
       <Header />
+      <SearchModal />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Blog" element={<Blog />} />
@@ -25,6 +28,7 @@ function App() {
         <Route path="/Account" element={<Account />} />
         <Route path="/Shop" element={<Shop />} />
         <Route path="/Details/:id" element={<Details />} />
+        <Route path="/Cart" element={<Cart />} />
       </Routes>
       <Policy />
       <Footer />

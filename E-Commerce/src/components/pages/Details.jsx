@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import product1 from '../../assets/img/products/product1/1.png';
 import StarIcon from '@mui/icons-material/Star';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { products } from '../../data';
@@ -445,10 +444,7 @@ const Details = () => {
                             Your rating <span className="text-red-600">*</span>
                           </span>
                           <div className="flex mt-2">
-                            <a
-                              href=""
-                              className="star-icons border-r pr-2 mr-2"
-                            >
+                            <a className="star-icons border-r pr-2 mr-2">
                               <StarIcon
                                 sx={{ fontSize: 15, color: 'gray' }}
                                 className="star-icon"

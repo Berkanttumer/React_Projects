@@ -91,9 +91,9 @@ const Header = () => {
           <SearchIcon onClick={handleOpenSearch} />
         </Link>
 
-        <a href="">
+        <Link to="/Favorites">
           <FavoriteBorderIcon />
-        </a>
+        </Link>
 
         <Link to="/Cart">
           <LocalMallOutlinedIcon className="relative" />

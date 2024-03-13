@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import StarIcon from '@mui/icons-material/Star';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { products } from '../../data';
@@ -18,6 +18,16 @@ const Details = () => {
   const [selectSize, setSelectSize] = useState();
   const [addToCart, setAddToCart] = useState(false);
   const [quantity, setQuantity] = useState(1);
+
+  useEffect(() => {
+    const product = products.find((data) => data.id === Number(id));
+    const image = '/' + product.img.thumbs[0];
+    setSelectImage(image);
+    setSelectColor(null);
+    setSelectSize(undefined);
+    setAddToCart(false);
+    setQuantity(1);
+  }, [id]);
 
   const handleImage = (imageUrl) => {
     setSelectImage(imageUrl);
@@ -122,7 +132,7 @@ const Details = () => {
             </div>
             <div className="right-col flex flex-col gap-3 w-1/2">
               <div>
-                <h1 className="text-3xl font-bold">Analogue Resin Strap</h1>
+                <h1 className="text-3xl font-bold">{product.title}</h1>
               </div>
               <div className=" flex items-center gap-5">
                 <div>
@@ -135,8 +145,12 @@ const Details = () => {
                 <div className="text-xs font-bold ">2 reviews</div>
               </div>
               <div className="text-xl flex gap-5">
-                <span className="line-through text-gray-400">$165.00</span>
-                <span className="font-bold ">$108.00</span>
+                <span className="line-through text-gray-400">
+                  {`$${product.price.oldPrice.toFixed(2)}`}
+                </span>
+                <span className="font-bold ">{`$${product.price.newPrice.toFixed(
+                  2
+                )}`}</span>
               </div>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

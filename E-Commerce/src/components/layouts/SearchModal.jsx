@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Box, Button, Modal, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { css } from '@emotion/react';
@@ -15,7 +15,13 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Key } from '@mui/icons-material';
 
 const SearchModal = () => {
-  const { handleClose, openSearch } = useContext(ModalContext);
+  const { handleCloseSearch, openSearch } = useContext(ModalContext);
+  const [searchValue, setSearchValue] = useState('');
+  const filteredProducts = products.filter((product) => {
+    return product.title.toLowerCase().includes(searchValue);
+  });
+  console.log(filteredProducts);
+  console.log(searchValue);
 
   const style = css`
     position: absolute;
@@ -59,7 +65,7 @@ const SearchModal = () => {
     <Modal
       className=" "
       open={openSearch}
-      onClose={handleClose}
+      onClose={handleCloseSearch}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
@@ -84,6 +90,9 @@ const SearchModal = () => {
               <input
                 type="text"
                 className="w-full outline-none text-black p-4 max-h-8 text-[14px]"
+                onChange={(e) =>
+                  setSearchValue(e.target.value.trim().toLowerCase())
+                }
               />
 
               <button className="absolute right-2 top-1 text-black ">
@@ -95,51 +104,94 @@ const SearchModal = () => {
                 RESULTS FROM PRODUCTS
               </h3>
               <div className="search-card flex gap-4 ">
-                {products.map((data) => {
-                  return (
-                    <div className="flex flex-col mt-6" key={data.id}>
-                      <div className="products-img relative flex justify-center">
-                        <Link to={`/Details/${data.id}`}>
-                          <img
-                            src={`/${data.img.thumbs[0]}`}
-                            alt=""
-                            className="image1"
-                          />
-                          <img
-                            src={`/${data.img.thumbs[1]}`}
-                            alt=""
-                            className="image2"
-                          />
-                        </Link>
-                        <div className="rounded-full absolute top-2 right-2  bg-red-700 w-9 h-9 flex items-center justify-center">
-                          <span className=" text-xs ">%{data.discount}</span>
-                        </div>
-                        <div></div>
-                      </div>
-                      <div className="product-info pt-5 items-center flex flex-col">
-                        <div>
-                          <h3>{data.title}</h3>
-                        </div>
+                {searchValue
+                  ? filteredProducts.map((product) => {
+                      return (
+                        <div className="flex flex-col mt-6" key={product.id}>
+                          <div className="products-img relative flex justify-center">
+                            <Link to={`/Details/${product.id}`}>
+                              <img
+                                src={`/${product.img.thumbs[0]}`}
+                                alt=""
+                                className="image1"
+                              />
+                              <img
+                                src={`/${product.img.thumbs[1]}`}
+                                alt=""
+                                className="image2"
+                              />
+                            </Link>
+                            <div className="rounded-full absolute top-2 right-2  bg-red-700 w-9 h-9 flex items-center justify-center">
+                              <span className=" text-xs ">
+                                %{product.discount}
+                              </span>
+                            </div>
+                            <div></div>
+                          </div>
+                          <div className="product-info pt-5 items-center flex flex-col">
+                            <div>
+                              <h3>{product.title}</h3>
+                            </div>
 
-                        <div className="pt-3 flex gap-2">
-                          <strong className="text-red-700 text-lg">
-                            ${data.price.newPrice.toFixed(2)}
-                          </strong>
-                          <strong className="text-gray-600 text-xs line-through">
-                            ${data.price.oldPrice.toFixed(2)}
-                          </strong>
+                            <div className="pt-3 flex gap-2">
+                              <strong className="text-red-700 text-lg">
+                                ${product.price.newPrice.toFixed(2)}
+                              </strong>
+                              <strong className="text-gray-600 text-xs line-through">
+                                ${product.price.oldPrice.toFixed(2)}
+                              </strong>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                  );
-                })}
+                      );
+                    })
+                  : products.map((data) => {
+                      return (
+                        <div className="flex flex-col mt-6" key={data.id}>
+                          <div className="products-img relative flex justify-center">
+                            <Link to={`/Details/${data.id}`}>
+                              <img
+                                src={`/${data.img.thumbs[0]}`}
+                                alt=""
+                                className="image1"
+                              />
+                              <img
+                                src={`/${data.img.thumbs[1]}`}
+                                alt=""
+                                className="image2"
+                              />
+                            </Link>
+                            <div className="rounded-full absolute top-2 right-2  bg-red-700 w-9 h-9 flex items-center justify-center">
+                              <span className=" text-xs ">
+                                %{data.discount}
+                              </span>
+                            </div>
+                            <div></div>
+                          </div>
+                          <div className="product-info pt-5 items-center flex flex-col">
+                            <div>
+                              <h3>{data.title}</h3>
+                            </div>
+
+                            <div className="pt-3 flex gap-2">
+                              <strong className="text-red-700 text-lg">
+                                ${data.price.newPrice.toFixed(2)}
+                              </strong>
+                              <strong className="text-gray-600 text-xs line-through">
+                                ${data.price.oldPrice.toFixed(2)}
+                              </strong>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
               </div>
             </div>
           </div>
         </div>
         <CloseIcon
           className="absolute top-2 right-2 cursor-pointer"
-          onClick={handleClose}
+          onClick={handleCloseSearch}
         />
       </Box>
     </Modal>

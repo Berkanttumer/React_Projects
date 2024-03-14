@@ -17,6 +17,9 @@ export const ModalProvider = ({ children }) => {
   };
   const handleClose = () => {
     setOpenModal(false);
+  };
+
+  const handleCloseSearch = () => {
     setOpenSearch(false);
   };
 
@@ -35,6 +38,7 @@ export const ModalProvider = ({ children }) => {
         handleClose,
         openSearch,
         handleOpenSearch,
+        handleCloseSearch,
       }}
     >
       {children}

@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { UserAuth } from '../../context/AuthContext';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContextProvider, UserAuth } from '../../context/AuthContext';
 import { useAsyncError, Await, Navigate, useNavigate } from 'react-router-dom';
 import SavedMoviesShows from '../layouts/SavedMoviesShows';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import { auth } from '../../firebase';
 
 const Account = () => {
   const { user } = UserAuth();
+
+  const { logOut } = UserAuth();
 
   return (
     <>
@@ -15,6 +19,11 @@ const Account = () => {
       <div className="container">
         <h1 className="text-3xl mt-20">My Favorites</h1>
         <SavedMoviesShows />
+
+        <div className="mt-32 flex gap-2">
+          <span className="text-red-700 font-bold">Exit</span>
+          <ExitToAppIcon className="hover:cursor-pointer" onClick={logOut} />
+        </div>
       </div>
     </>
   );

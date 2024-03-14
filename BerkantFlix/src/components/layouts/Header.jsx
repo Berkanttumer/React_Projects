@@ -67,12 +67,16 @@ const Header = () => {
                 <button className="nav-btn close-btn" onClick={handleCloseBtn}>
                   <i className="fas fa-times text-blue-900"></i>
                 </button>
-                <button className="nav-btn open-btn" onClick={handleOpenBtn}>
+                <button
+                  className="nav-btn open-btn"
+                  onClick={isVisible ? handleCloseBtn : handleOpenBtn}
+                >
                   <i className="fas fa-bars text-blue-900"></i>
                 </button>
                 <Link to="/" className="w-[180px]">
                   <img className="w-[220px]" src={logo} alt="" />
                 </Link>
+
                 <form
                   className="mt-2 search-form-mobile"
                   onSubmit={handleSubmit}
@@ -88,31 +92,53 @@ const Header = () => {
                 </form>
                 <ul className="list">
                   <li>
-                    <Link to="/Movies">Movies</Link>
+                    <Link to="/Movies" onClick={handleCloseBtn}>
+                      Movies
+                    </Link>
                   </li>
                   <li>
-                    <Link to="/Tvshows">TV Shows</Link>
+                    <Link to="/Tvshows" onClick={handleCloseBtn}>
+                      TV Shows
+                    </Link>
                   </li>
-                  <li>
-                    <button
-                      onClick={() => {
-                        handleOpen();
-                        handleCloseBtn();
-                      }}
-                    >
-                      Sign in
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      onClick={() => {
-                        handleOpen();
-                        handleCloseBtn();
-                      }}
-                    >
-                      Sign Up
-                    </button>
-                  </li>
+                  {user?.email ? (
+                    ''
+                  ) : (
+                    <li>
+                      <button
+                        onClick={() => {
+                          handleOpen();
+                          handleCloseBtn();
+                        }}
+                      >
+                        Sign in
+                      </button>
+                    </li>
+                  )}
+                  {user?.email ? (
+                    ''
+                  ) : (
+                    <li>
+                      <button
+                        onClick={() => {
+                          handleOpen();
+                          handleCloseBtn();
+                        }}
+                      >
+                        Sign Up
+                      </button>
+                    </li>
+                  )}
+                  {user?.email ? (
+                    <li>
+                      <Link to="Account">
+                        <button onClick={handleCloseBtn}>Account</button>
+                      </Link>
+                    </li>
+                  ) : (
+                    ''
+                  )}
+                  <li></li>
                 </ul>
               </div>
             </div>
@@ -131,6 +157,7 @@ const Header = () => {
               <img className="w-full" src={logo} alt="" />
             </NavLink>
           </div>
+
           <form
             id="search-form"
             className="search-form"

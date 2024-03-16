@@ -8,7 +8,11 @@ import MegaMenuImage from '../../assets/img/mega-menu.jpg';
 import { Link, NavLink } from 'react-router-dom';
 import { ModalContext } from '../../ContextAPI/ModalProvider';
 const Header = () => {
-  const { openSearch, handleOpenSearch } = useContext(ModalContext);
+  const { openSearch, handleOpenSearch, cartItems } = useContext(ModalContext);
+  const totalItems = cartItems.reduce(
+    (total, product) => total + product.quantity,
+    0
+  );
 
   return (
     <header className="container flex items-center justify-between !mt-8 relative">
@@ -100,7 +104,7 @@ const Header = () => {
         </Link>
 
         <div className="absolute -top-1 -right-1 w-4 h-4 rounded-full flex items-center justify-center bg-blue-700">
-          <span className="text-[10px] font-bold ">0</span>
+          <span className="text-[10px] font-bold ">{totalItems}</span>
         </div>
       </div>
     </header>

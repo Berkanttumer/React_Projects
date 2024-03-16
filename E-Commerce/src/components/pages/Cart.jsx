@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { Suspense, useContext } from 'react';
 import product1 from '../../assets/img/products/product1/1.png';
 import CloseIcon from '@mui/icons-material/Close';
+import { ModalContext } from '../../ContextAPI/ModalProvider';
 
 const Cart = () => {
+  const { cartItems, deleteItem } = useContext(ModalContext);
+  const subtotal = cartItems.reduce(
+    (total, item) => total + item.quantity * item.price.newPrice,
+    0
+  );
+  let shipping = 15;
+  if (subtotal > 100) {
+    shipping = 0;
+  }
+
   return (
     <section className="mt-12">
       <div className="container">
@@ -10,42 +21,38 @@ const Cart = () => {
           <div className="table-wrapper w-2/3">
             <table className="w-full">
               <thead>
-                <th>{''}</th>
-                <th>Product</th>
-                <th>Price</th>
-                <th className="text-center">Quantity</th>
-                <th className="text-center">Subtotal</th>
+                <tr>
+                  <th>{''}</th>
+                  <th>Product</th>
+                  <th>Price</th>
+                  <th className="text-center">Quantity</th>
+                  <th className="text-center">Subtotal</th>
+                </tr>
               </thead>
               <tbody className="cart-wrapper">
-                <tr className="cart-item">
-                  <td className="relative">
-                    <img src={product1} />
-                    <i className="w-4 h-4 rounded-full flex items-center justify-center bg-red-700 absolute top-1 -left-2 hover:cursor-pointer">
-                      <CloseIcon
-                        style={{
-                          fontSize: '12px',
-                          color: 'white',
-                          fontWeight: '1200',
-                        }}
-                        className=" "
-                      />
-                    </i>
-                  </td>
-                  <td>Analogue Resin Stray</td>
-                  <td>$108.00</td>
-                  <td>1</td>
-                  <td>$108.00</td>
-                </tr>
-                <tr className="cart-item">
-                  <td>
-                    <img src={product1} alt="" />
-                    <i></i>
-                  </td>
-                  <td>Analogue Resin Stray</td>
-                  <td>$108.00</td>
-                  <td>1</td>
-                  <td>$108.00</td>
-                </tr>
+                {cartItems.map((item) => {
+                  return (
+                    <tr className="cart-item" key={item.id}>
+                      <td className="relative">
+                        <img src={item.img.thumbs[0]} />
+                        <i className="w-4 h-4 rounded-full flex items-center justify-center bg-red-700 absolute top-1 -left-2 hover:cursor-pointer">
+                          <CloseIcon
+                            style={{
+                              fontSize: '12px',
+                              color: 'white',
+                              fontWeight: '1200',
+                            }}
+                            onClick={() => deleteItem(item.id)}
+                          />
+                        </i>
+                      </td>
+                      <td>{item.title}</td>
+                      <td>${item.price.newPrice}</td>
+                      <td>{item.quantity}</td>
+                      <td>${item.quantity * item.price.newPrice}</td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
@@ -54,19 +61,41 @@ const Cart = () => {
               <div>
                 <h3 className="font-bold text-xl">Cart Totals</h3>
               </div>
+
               <div>
                 <span>Subtotal</span>
-                <span>$216.00</span>
-              </div>
-              <div>
-                <span>Shipping</span>
-                <span>$15.00</span>
-              </div>
-              <div>
-                <span>Total</span>
-                <span className="font-bold text-xl">$108.00</span>
+                <span>${subtotal.toFixed(2)}</span>
               </div>
 
+              {cartItems.length === 0 ? (
+                ''
+              ) : subtotal >= 100 ? (
+                <div className="line-through opacity-55">
+                  <span>Shipping</span>
+                  <span>$15.00</span>
+                </div>
+              ) : (
+                <div>
+                  <span>Shipping</span>
+                  <span>$15.00</span>
+                </div>
+              )}
+
+              <div>
+                <span>Total</span>
+                <span className="font-bold text-xl">
+                  $
+                  {cartItems.length > 0
+                    ? subtotal > 100
+                      ? subtotal
+                      : subtotal + shipping
+                    : 0}
+                </span>
+              </div>
+
+              <span className="text-xs">
+                * Min order $100 dolar for free shipping.
+              </span>
               <button className="pt-3 pb-3 pl-6 pr-6 text-white bg-red-700 ">
                 Proceed to checkout
               </button>

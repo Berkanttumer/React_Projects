@@ -166,7 +166,7 @@ const Footer = () => {
           <div className="flex gap-5 items-center  ">
             <div>
               <p className="text-xs">
-                Copyright 2022 © E-Commerce Theme. All right reserved. Powered
+                Copyright 2024 © E-Commerce Theme. All right reserved. Powered
                 by Berkant Tümer.
               </p>
             </div>

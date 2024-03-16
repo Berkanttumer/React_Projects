@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import StarIcon from '@mui/icons-material/Star';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { products } from '../../data';
@@ -8,16 +8,24 @@ import 'swiper/swiper-bundle.css';
 import { useParams } from 'react-router-dom';
 import profile from '../../assets/img/avatars/avatar1.jpg';
 import Campaign from '../layouts/Campaign';
+import { ModalContext } from '../../ContextAPI/ModalProvider';
 
 const Details = () => {
+  const {
+    cartItems,
+    handleCart,
+    addToCart,
+    setAddToCart,
+    quantity,
+    setQuantity,
+  } = useContext(ModalContext);
+
   const { id } = useParams();
   const product = products.find((data) => data.id === Number(id));
   const image = '/' + product.img.thumbs[0];
   const [Selectimage, setSelectImage] = useState(image);
   const [selectColor, setSelectColor] = useState(null);
   const [selectSize, setSelectSize] = useState();
-  const [addToCart, setAddToCart] = useState(false);
-  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     const product = products.find((data) => data.id === Number(id));
@@ -48,16 +56,11 @@ const Details = () => {
     setSelectSize(value);
   };
 
-  const handleCart = () => {
-    setAddToCart(true);
-  };
-
   const [tab, setTab] = useState('desc');
   const changeTab = (tab) => {
     setTab(tab);
     const tabElement = document.getElementById(tab);
 
-    // Make the text of the tab bold
     if (tabElement) {
       tabElement.style.fontWeight = '800';
       console.log(tabElement);
@@ -253,7 +256,7 @@ const Details = () => {
                         ? 'flex  items-center justify-center text-center bg-blue-500 opacity-45 w-full  text-sm h-12'
                         : 'transition-btn flex  items-center justify-center bg-blue-500 w-full text-sm hover:bg-white hover:text-[#1d4ed8] h-12'
                     }
-                    onClick={handleCart}
+                    onClick={() => handleCart(product)}
                     disabled={addToCart}
                   >
                     Add to cart

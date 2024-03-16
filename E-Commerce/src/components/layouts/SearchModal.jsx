@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Box, Button, Modal, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { css } from '@emotion/react';
@@ -20,8 +20,10 @@ const SearchModal = () => {
   const filteredProducts = products.filter((product) => {
     return product.title.toLowerCase().includes(searchValue);
   });
-  console.log(filteredProducts);
-  console.log(searchValue);
+
+  useEffect(() => {
+    setSearchValue('');
+  }, [openSearch]);
 
   const style = css`
     position: absolute;
@@ -109,7 +111,10 @@ const SearchModal = () => {
                       return (
                         <div className="flex flex-col mt-6" key={product.id}>
                           <div className="products-img relative flex justify-center">
-                            <Link to={`/Details/${product.id}`}>
+                            <Link
+                              to={`/Details/${product.id}`}
+                              onClick={handleCloseSearch}
+                            >
                               <img
                                 src={`/${product.img.thumbs[0]}`}
                                 alt=""
@@ -149,7 +154,10 @@ const SearchModal = () => {
                       return (
                         <div className="flex flex-col mt-6" key={data.id}>
                           <div className="products-img relative flex justify-center">
-                            <Link to={`/Details/${data.id}`}>
+                            <Link
+                              to={`/Details/${data.id}`}
+                              onClick={handleCloseSearch}
+                            >
                               <img
                                 src={`/${data.img.thumbs[0]}`}
                                 alt=""

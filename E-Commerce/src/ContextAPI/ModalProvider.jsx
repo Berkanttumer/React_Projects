@@ -30,6 +30,50 @@ export const ModalProvider = ({ children }) => {
     console.log(openSearch);
   };
 
+  const [addToCart, setAddToCart] = useState(false);
+  const [cartItems, setCartItems] = useState(
+    localStorage.getItem('cartItems')
+      ? JSON.parse(localStorage.getItem('cartItems'))
+      : []
+  );
+  const handleCart = (product) => {
+    setAddToCart(true);
+
+    const existingItem = cartItems.find((item) => item.id === product.id);
+
+    if (existingItem) {
+      setCartItems(
+        cartItems.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + quantity }
+            : item
+        )
+      );
+    } else {
+      setCartItems((prevItems) => [
+        ...prevItems,
+        {
+          ...product,
+          quantity: quantity,
+        },
+      ]);
+    }
+  };
+
+  const deleteItem = (id) => {
+    const filteredItems = cartItems.filter((item) => {
+      return item.id !== id;
+    });
+    setCartItems(filteredItems);
+  };
+
+  const [quantity, setQuantity] = useState(1);
+
+  useEffect(() => {
+    console.log('cartItems', cartItems);
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }, [cartItems]);
+
   return (
     <ModalContext.Provider
       value={{
@@ -39,6 +83,13 @@ export const ModalProvider = ({ children }) => {
         openSearch,
         handleOpenSearch,
         handleCloseSearch,
+        handleCart,
+        addToCart,
+        setAddToCart,
+        cartItems,
+        deleteItem,
+        quantity,
+        setQuantity,
       }}
     >
       {children}

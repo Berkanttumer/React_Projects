@@ -9,6 +9,7 @@ import { useParams } from 'react-router-dom';
 import profile from '../../assets/img/avatars/avatar1.jpg';
 import Campaign from '../layouts/Campaign';
 import { ModalContext } from '../../ContextAPI/ModalProvider';
+import { AuthContext } from '../../ContextAPI/AuthContext';
 
 const Details = () => {
   const {
@@ -26,6 +27,8 @@ const Details = () => {
   const [Selectimage, setSelectImage] = useState(image);
   const [selectColor, setSelectColor] = useState(null);
   const [selectSize, setSelectSize] = useState();
+  const { user } = useContext(AuthContext);
+  console.log(user);
 
   useEffect(() => {
     const product = products.find((data) => data.id === Number(id));
@@ -545,11 +548,19 @@ const Details = () => {
                         </div>
                       </form>
                     </div>
-                    <div className="mt-12">
-                      <button className="transition-btn bg-white text-black pt-2 pb-2 pl-6 pr-6 hover:bg-[#1d4ed8] hover:text-white ">
-                        Sign up for comment
-                      </button>
-                    </div>
+                    {user ? (
+                      <div className="mt-12">
+                        <button className="transition-btn bg-white text-black pt-2 pb-2 pl-6 pr-6 hover:bg-[#1d4ed8] hover:text-white ">
+                          Add your Comment
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="mt-12">
+                        <button className="transition-btn bg-white text-black pt-2 pb-2 pl-6 pr-6 hover:bg-[#1d4ed8] hover:text-white ">
+                          Sign up for comment
+                        </button>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>

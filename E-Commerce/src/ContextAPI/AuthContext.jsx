@@ -7,12 +7,21 @@ import {
   signOut,
   onAuthStateChanged,
   updateProfile,
+  GithubAuthProvider,
+  signInWithRedirect,
+  signInWithPopup,
 } from 'firebase/auth';
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState('');
+
+  function signGitHub() {
+    const provider = new GithubAuthProvider();
+    return signInWithPopup(auth, provider);
+  }
+
   async function signUp(email, password) {
     await createUserWithEmailAndPassword(auth, email, password);
     setDoc(doc(db, 'users', email), {
@@ -40,7 +49,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ signUp, logIn, updateProfile, logOut, user }}
+      value={{ signUp, logIn, updateProfile, logOut, user, signGitHub }}
     >
       {children}
     </AuthContext.Provider>

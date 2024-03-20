@@ -7,7 +7,7 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { red } from '@mui/material/colors';
 
 const Account = () => {
-  const { signUp, logIn, updateProfile, logOut, user } =
+  const { signUp, logIn, updateProfile, logOut, user, signGitHub } =
     useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -120,7 +120,10 @@ const Account = () => {
                   <hr className="border-gray-500 flex-grow" />
                 </div>
                 <div className="mt-4 flex justify-center gap-5 ">
-                  <button className="bg-black text-white items-center flex gap-2 border-gray-700 border w-4/5 justify-center pt-1 pb-1 rounded-lg hover:bg-gray-800">
+                  <button
+                    className="bg-black text-white items-center flex gap-2 border-gray-700 border w-4/5 justify-center pt-1 pb-1 rounded-lg hover:bg-gray-800"
+                    onClick={signGitHub}
+                  >
                     <GitHubIcon sx={{ fontSize: '20px' }} />
                     GitHub
                   </button>

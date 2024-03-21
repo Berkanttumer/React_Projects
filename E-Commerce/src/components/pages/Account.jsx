@@ -95,15 +95,15 @@ const Account = () => {
                     <label>E-Mail *</label>
                     <input
                       type="email"
-                      className="border-black border w-4/5"
+                      className="border-black border w-4/5 "
                       onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
                   <div className="gap-1 flex flex-col">
                     <label>Password *</label>
                     <input
-                      type="text"
-                      className="border-black border w-4/5"
+                      type="password"
+                      className="border-black border w-4/5 "
                       onChange={(e) => setPassword(e.target.value)}
                     />
                   </div>
@@ -143,7 +143,7 @@ const Account = () => {
                   <div className="gap-1 flex flex-col mb-2">
                     <label>Password *</label>
                     <input
-                      type="text"
+                      type="password"
                       className="border-black border "
                       onChange={(e) => setPassword(e.target.value)}
                     />

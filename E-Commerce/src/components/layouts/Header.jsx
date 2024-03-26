@@ -4,9 +4,10 @@ import SearchIcon from '@mui/icons-material/Search';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MegaMenuImage from '../../assets/img/mega-menu.jpg';
+import MegaMenuImage from '../../../public/img/mega-menu.jpg';
 import { Link, NavLink } from 'react-router-dom';
 import { ModalContext } from '../../ContextAPI/ModalProvider';
+import MenuIcon from '@mui/icons-material/Menu';
 const Header = () => {
   const { openSearch, handleOpenSearch, cartItems } = useContext(ModalContext);
   const totalItems = cartItems.reduce(
@@ -14,12 +15,34 @@ const Header = () => {
     0
   );
 
+  const [showMenu, setShowMenu] = useState(false);
+
   return (
     <header className="container flex items-center justify-between !mt-8 relative">
+      <div className="md:hidden">
+        {showMenu ? (
+          ''
+        ) : (
+          <MenuIcon
+            className="cursor-pointer"
+            onClick={() => setShowMenu(true)}
+          />
+        )}
+
+        <div>
+          {showMenu && (
+            <ul>
+              <li>Home</li>
+              <li>Shop</li>
+            </ul>
+          )}
+        </div>
+      </div>
+
       <Link to="/" className="font-bold text-3xl">
         LOGO
       </Link>
-      <ul className="flex gap-3 items-center ">
+      <ul className="hidden gap-3 items-center md:flex ">
         <li>
           <NavLink to="/" className="flex items-center ">
             HOME <ExpandMoreIcon sx={{ color: 'gray' }} />

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AppStoreIcon from '../../assets/img/footer/app-store.png';
-import AndroidIcon from '../../assets/img/footer/google-play.png';
-import cards from '../../assets/img/footer/cards.png';
+import AppStoreIcon from '../../../public/img/footer/app-store.png';
+import AndroidIcon from '../../../public/img/footer/google-play.png';
+import cards from '../../../public/img/footer/cards.png';
 
 const Footer = () => {
   return (

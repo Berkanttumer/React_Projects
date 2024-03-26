@@ -1,10 +1,10 @@
 import React from 'react';
-import Blog1 from '../../assets/img/blogs/blog1.jpg';
-import Blog2 from '../../assets/img/blogs/blog2.jpg';
-import Blog3 from '../../assets/img/blogs/blog3.jpg';
-import Blog4 from '../../assets/img/blogs/blog4.jpg';
-import Blog5 from '../../assets/img/blogs/blog5.jpg';
-import Blog6 from '../../assets/img/blogs/blog6.jpg';
+import Blog1 from '../../../public/img/blogs/blog1.jpg';
+import Blog2 from '../../../public/img/blogs/blog2.jpg';
+import Blog3 from '../../../public/img/blogs/blog3.jpg';
+import Blog4 from '../../../public/img/blogs/blog4.jpg';
+import Blog5 from '../../../public/img/blogs/blog5.jpg';
+import Blog6 from '../../../public/img/blogs/blog6.jpg';
 
 const Blog = ({ type }) => {
   return type === 'blogForHome' ? (

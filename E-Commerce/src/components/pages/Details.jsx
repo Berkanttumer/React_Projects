@@ -6,7 +6,7 @@ import { products } from '../../data';
 import 'swiper/css';
 import 'swiper/swiper-bundle.css';
 import { useParams } from 'react-router-dom';
-import profile from '../../assets/img/avatars/avatar1.jpg';
+import profile from '../../../public/img/avatars/avatar1.jpg';
 import Campaign from '../layouts/Campaign';
 import { ModalContext } from '../../ContextAPI/ModalProvider';
 import { AuthContext } from '../../ContextAPI/AuthContext';

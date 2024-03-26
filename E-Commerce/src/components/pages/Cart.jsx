@@ -1,5 +1,5 @@
 import React, { Suspense, useContext } from 'react';
-import product1 from '../../assets/img/products/product1/1.png';
+
 import CloseIcon from '@mui/icons-material/Close';
 import { ModalContext } from '../../ContextAPI/ModalProvider';
 

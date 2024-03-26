@@ -1,8 +1,8 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import img1 from '../../assets/img/slider/slider1.jpg';
-import img2 from '../../assets/img/slider/slider2.jpg';
-import img3 from '../../assets/img/slider/slider3.jpg';
+import img1 from '../../../public/img/slider/slider1.jpg';
+import img2 from '../../../public/img/slider/slider2.jpg';
+import img3 from '../../../public/img/slider/slider3.jpg';
 import 'swiper/css';
 import 'swiper/swiper-bundle.css';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';

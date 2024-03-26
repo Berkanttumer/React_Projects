@@ -1,9 +1,9 @@
 import React from 'react';
-import Brand1 from '../../assets/img/brands/brand1.png';
-import Brand2 from '../../assets/img/brands/brand2.png';
-import Brand3 from '../../assets/img/brands/brand3.png';
-import Brand4 from '../../assets/img/brands/brand4.png';
-import Brand5 from '../../assets/img/brands/brand5.png';
+import Brand1 from '../../../public/img/brands/brand1.png';
+import Brand2 from '../../../public/img/brands/brand2.png';
+import Brand3 from '../../../public/img/brands/brand3.png';
+import Brand4 from '../../../public/img/brands/brand4.png';
+import Brand5 from '../../../public/img/brands/brand5.png';
 
 const Brands = () => {
   return (

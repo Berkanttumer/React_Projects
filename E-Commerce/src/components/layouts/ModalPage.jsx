@@ -1,7 +1,7 @@
 import { Box, Button, Modal, Typography } from '@mui/material';
 import React, { useContext } from 'react';
 import { css } from '@emotion/react';
-import ModalDialog from '../../assets/img/modal-dialog.jpg';
+import ModalDialog from '../../../public/img/modal-dialog.jpg';
 import CloseIcon from '@mui/icons-material/Close';
 import { ModalContext } from '../../ContextAPI/ModalProvider';
 

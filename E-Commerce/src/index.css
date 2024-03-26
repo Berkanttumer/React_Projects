@@ -266,25 +266,25 @@ path {
 }
 
 .item-1:nth-child(1) {
-  background: url('assets/img/campaigns/banner1.png') no-repeat;
+  background: url('img/campaigns/banner1.png') no-repeat;
   background-position: center;
   padding: 70px 35px;
   background-size: cover;
 }
 .item-2:nth-child(2) {
-  background: url('assets/img/campaigns/banner2.png') no-repeat;
+  background: url('/img/campaigns/banner2.png') no-repeat;
   background-position: center;
   padding: 70px 35px;
   background-size: cover;
 }
 .item-3:nth-child(1) {
-  background: url('assets/img/campaigns/banner3.png') no-repeat;
+  background: url('/img/campaigns/banner3.png') no-repeat;
   background-position: center;
   padding: 70px 35px;
   background-size: cover;
 }
 .item-4:nth-child(2) {
-  background: url('assets/img/campaigns/banner4.png') no-repeat;
+  background: url('/img/campaigns/banner4.png') no-repeat;
   background-position: center;
   padding: 70px 35px;
   background-size: cover;
@@ -330,7 +330,7 @@ input::-webkit-input-placeholder {
 }
 
 .campaign {
-  background-image: url('assets/img/single-campaign.png');
+  background-image: url('/img/single-campaign.png');
   padding: 140px 15px;
   margin-bottom: 30px;
   display: flex;

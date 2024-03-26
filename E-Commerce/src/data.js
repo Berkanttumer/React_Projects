@@ -9,9 +9,9 @@ export const products = [
     discount: 34,
     img: {
       thumbs: [
-        'src/assets/img/products/product1/1.png',
-        'src/assets/img/products/product1/2.png',
-        'src/assets/img/products/product1/3.png',
+        '/img/products/product1/1.png',
+        '/img/products/product1/2.png',
+        '/img/products/product1/3.png',
       ],
     },
   },
@@ -25,9 +25,9 @@ export const products = [
     discount: 33,
     img: {
       thumbs: [
-        'src/assets/img/products/product2/1.png',
-        'src/assets/img/products/product2/2.png',
-        'src/assets/img/products/product2/3.png',
+        '/img/products/product2/1.png',
+        '/img/products/product2/2.png',
+        '/img/products/product2/3.png',
       ],
     },
   },
@@ -41,9 +41,9 @@ export const products = [
     discount: 90,
     img: {
       thumbs: [
-        'src/assets/img/products/product3/1.png',
-        'src/assets/img/products/product3/2.png',
-        'src/assets/img/products/product3/3.png',
+        '/img/products/product3/1.png',
+        '/img/products/product3/2.png',
+        '/img/products/product3/3.png',
       ],
     },
   },
@@ -57,9 +57,9 @@ export const products = [
     discount: 20,
     img: {
       thumbs: [
-        'src/assets/img/products/product4/1.png',
-        'src/assets/img/products/product4/2.png',
-        'src/assets/img/products/product4/3.png',
+        '/img/products/product4/1.png',
+        '/img/products/product4/2.png',
+        '/img/products/product4/3.png',
       ],
     },
   },
@@ -73,9 +73,9 @@ export const products = [
     discount: 17,
     img: {
       thumbs: [
-        'src/assets/img/products/product5/1.png',
-        'src/assets/img/products/product5/2.png',
-        'src/assets/img/products/product5/3.png',
+        '/img/products/product5/1.png',
+        '/img/products/product5/2.png',
+        '/img/products/product5/3.png',
       ],
     },
   },

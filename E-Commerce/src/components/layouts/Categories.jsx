@@ -1,10 +1,10 @@
 import React from 'react';
-import smartphone from '../../assets/img/categories/categories1.png';
-import watch from '../../assets/img/categories/categories2.png';
-import electronic from '../../assets/img/categories/categories3.png';
-import furniture from '../../assets/img/categories/categories4.png';
-import collection from '../../assets/img/categories/categories5.png';
-import fashion from '../../assets/img/categories/categories6.png';
+import smartphone from '../../../public/img/categories/categories1.png';
+import watch from '../../../public/img/categories/categories2.png';
+import electronic from '../../../public/img/categories/categories3.png';
+import furniture from '../../../public/img/categories/categories4.png';
+import collection from '../../../public/img/categories/categories5.png';
+import fashion from '../../../public/img/categories/categories6.png';
 
 const Categories = () => {
   return (

@@ -1,16 +1,63 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import 'swiper/css';
 import 'swiper/swiper-bundle.css';
 import StarIcon from '@mui/icons-material/Star';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { db } from '../../firebase';
+import { arrayUnion, doc, getDoc, updateDoc } from 'firebase/firestore';
+import { AuthContext } from '../../ContextAPI/AuthContext';
 
 const Card = ({ data }) => {
   const [favorite, setFavorite] = useState(false);
-  const handlefavorite = () => {
-    setFavorite(true);
+  const [saved, setSaved] = useState(false);
+
+  const { user } = useContext(AuthContext);
+
+  const productID = doc(db, 'users', `${user?.email}`);
+  const saveProduct = async () => {
+    if (user?.email) {
+      if (favorite) {
+        return;
+      }
+      setFavorite(!favorite);
+      setSaved(true);
+      await updateDoc(productID, {
+        savedFavorites: arrayUnion({
+          id: data.id,
+          title: data.title,
+          img: {
+            thumbs: [data.img.thumbs[0], data.img.thumbs[1]],
+          },
+          price: {
+            oldPrice: data.price.oldPrice,
+            newPrice: data.price.newPrice,
+          },
+          discount: data.discount,
+        }),
+      });
+    } else {
+      alert('Please login to save product');
+    }
   };
+
+  useEffect(() => {
+    const checkFavorite = async () => {
+      const docSnapshot = await getDoc(productID);
+      if (docSnapshot.exists()) {
+        const userData = docSnapshot.data();
+        const isFavorite = userData.savedFavorites.some(
+          (product) => product.id === data?.id
+        );
+        setFavorite(isFavorite);
+      }
+    };
+
+    if (user?.email) {
+      checkFavorite();
+    }
+  }, [user?.email, data?.id]);
 
   return (
     <div>
@@ -27,12 +74,12 @@ const Card = ({ data }) => {
             {favorite ? (
               <FavoriteIcon
                 className="absolute top-2 left-2 text-red-700 cursor-pointer"
-                onClick={handlefavorite}
+                onClick={saveProduct}
               />
             ) : (
               <FavoriteBorderIcon
                 className="absolute top-2 left-2 text-black cursor-pointer"
-                onClick={handlefavorite}
+                onClick={saveProduct}
               />
             )}
           </div>

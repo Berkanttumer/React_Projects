@@ -266,7 +266,7 @@ path {
 }
 
 .item-1:nth-child(1) {
-  background: url('img/campaigns/banner1.png') no-repeat;
+  background: url('/img/campaigns/banner1.png') no-repeat;
   background-position: center;
   padding: 70px 35px;
   background-size: cover;

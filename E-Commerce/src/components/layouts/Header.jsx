@@ -8,6 +8,7 @@ import MegaMenuImage from '../../../public/img/mega-menu.jpg';
 import { Link, NavLink } from 'react-router-dom';
 import { ModalContext } from '../../ContextAPI/ModalProvider';
 import MenuIcon from '@mui/icons-material/Menu';
+import { AuthContext } from '../../ContextAPI/AuthContext';
 const Header = () => {
   const { openSearch, handleOpenSearch, cartItems } = useContext(ModalContext);
   const totalItems = cartItems.reduce(
@@ -15,34 +16,130 @@ const Header = () => {
     0
   );
 
+  const [isVisible, setIsVisible] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+  const { user } = useContext(AuthContext);
+  const handleOpenBtn = () => {
+    setIsVisible(true);
+  };
+
+  const handleCloseBtn = () => {
+    setIsVisible(false);
+  };
+  const [mobileModal, setMobileModal] = useState(false);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <header className="container flex items-center justify-between !mt-8 relative">
+      {/* <div className="md:hidden ">
+        <MenuIcon
+          className="cursor-pointer"
+          onClick={() => setShowMenu(true)}
+        />
+      </div> */}
       <div className="md:hidden">
-        {showMenu ? (
-          ''
-        ) : (
-          <MenuIcon
-            className="cursor-pointer"
-            onClick={() => setShowMenu(true)}
-          />
-        )}
+        <MenuIcon onClick={handleOpenBtn} className="cursor-pointer " />
+      </div>
 
-        <div>
-          {showMenu && (
-            <ul>
-              <li>Home</li>
-              <li>Shop</li>
+      <div
+        className={`nav-wrapper relative${mobileModal ? handleCloseBtn : ''}`}
+      >
+        <div className={`nav nav-black ${isVisible ? 'visible' : ''}`}>
+          <div className={`nav nav-white ${isVisible ? 'visible' : ''}`}>
+            <button
+              className="nav-btn close-btn absolute top-10 right-0"
+              onClick={handleCloseBtn}
+            >
+              <i className="fas fa-times"></i>
+            </button>
+            <button
+              className="nav-btn open-btn"
+              onClick={isVisible ? handleCloseBtn : handleOpenBtn}
+            >
+              <i className="fas fa-bars "></i>
+            </button>
+            <Link to="/" className="w-[180px]">
+              <img className="w-[220px]" alt="" />
+            </Link>
+
+            <form className="mt-2 search-form-mobile" onSubmit={handleSubmit}>
+              <input
+                className="mobile-search"
+                id="searchInputMobile"
+                type="text"
+                placeholder="Search a movie or show"
+              />
+            </form>
+            <ul className="list flex flex-col mt-6 gap-5 ">
+              <li>
+                <Link to="/" onClick={handleCloseBtn}>
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link to="/Shop" onClick={handleCloseBtn}>
+                  Shop
+                </Link>
+              </li>
+              <li>
+                <Link to="/Blog" onClick={handleCloseBtn}>
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link to="/Contact" onClick={handleCloseBtn}>
+                  Contact
+                </Link>
+              </li>
+              {user?.email ? (
+                ''
+              ) : (
+                <li>
+                  <button
+                    onClick={() => {
+                      handleOpen();
+                      handleCloseBtn();
+                    }}
+                  >
+                    Sign in
+                  </button>
+                </li>
+              )}
+              {user?.email ? (
+                ''
+              ) : (
+                <li>
+                  <button
+                    onClick={() => {
+                      handleOpen();
+                      handleCloseBtn();
+                    }}
+                  >
+                    Sign Up
+                  </button>
+                </li>
+              )}
+              {user?.email ? (
+                <li>
+                  <Link to="Account">
+                    <button onClick={handleCloseBtn}>Account</button>
+                  </Link>
+                </li>
+              ) : (
+                ''
+              )}
+              <li></li>
             </ul>
-          )}
+          </div>
         </div>
       </div>
 
       <Link to="/" className="font-bold text-3xl">
         LOGO
       </Link>
-      <ul className="hidden gap-3 items-center md:flex ">
+      <ul className="menu-list  hidden gap-3 items-center md:flex">
         <li>
           <NavLink to="/" className="flex items-center ">
             HOME <ExpandMoreIcon sx={{ color: 'gray' }} />

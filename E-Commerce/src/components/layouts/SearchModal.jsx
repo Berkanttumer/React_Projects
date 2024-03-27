@@ -116,12 +116,12 @@ const SearchModal = () => {
                               onClick={handleCloseSearch}
                             >
                               <img
-                                src={`/${product.img.thumbs[0]}`}
+                                src={`${product.img.thumbs[0]}`}
                                 alt=""
                                 className="image1"
                               />
                               <img
-                                src={`/${product.img.thumbs[1]}`}
+                                src={`${product.img.thumbs[1]}`}
                                 alt=""
                                 className="image2"
                               />
@@ -159,12 +159,12 @@ const SearchModal = () => {
                               onClick={handleCloseSearch}
                             >
                               <img
-                                src={`/${data.img.thumbs[0]}`}
+                                src={`${data.img.thumbs[0]}`}
                                 alt=""
                                 className="image1"
                               />
                               <img
-                                src={`/${data.img.thumbs[1]}`}
+                                src={`${data.img.thumbs[1]}`}
                                 alt=""
                                 className="image2"
                               />

@@ -80,7 +80,7 @@ header ul li:hover {
 
 /* Mobile menu end */
 
-@media (max-width: 400px) {
+@media (max-width: 900px) {
   .table-wrapper {
   }
   .table-wrap-deneme {

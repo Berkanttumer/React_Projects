@@ -35,31 +35,19 @@ const SearchModal = () => {
     background-color: black;
     outline: none;
 
-    // @media (max-width: 900px) {
-    //   width: 550px;
-    //   height: 440px;
-    // }
-
-    // @media (max-width: 1200px) {
-    //   width: 550px;
-    //   height: 440px;
-    // }
-    // @media (max-width: 1500px) {
-    //   width: 600px;
-    //   height: 440px;
-    // }
-
-    @media (max-width: 400px) {
-      width: 350px;
-      height: 450px;
-      top: 50%;
-      left: 50%;
-      .modal-wrapper {
-        display: flex;
-        flex-direction: column;
+    @media (max-width: 800px) {
+      width: 620px;
+      height: 600px;
+      .search-card {
+        overflow-x: scroll;
       }
-      img {
-        display: none;
+    }
+
+    @media (max-width: 600px) {
+      width: 420px;
+      height: 600px;
+      .search-card {
+        overflow-x: scroll;
       }
     }
   `;
@@ -138,7 +126,7 @@ const SearchModal = () => {
                               <h3>{product.title}</h3>
                             </div>
 
-                            <div className="pt-3 flex gap-2">
+                            <div className="product-price2 pt-3 flex gap-2">
                               <strong className="text-red-700 text-lg">
                                 ${product.price.newPrice.toFixed(2)}
                               </strong>

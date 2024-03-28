@@ -16,8 +16,8 @@ const Cart = () => {
 
   return (
     <section className="mt-12">
-      <div className="container">
-        <div className="flex justify-between">
+      <div className="container ">
+        <div className="flex justify-between table-wrap-deneme">
           <div className="table-wrapper w-2/3">
             <table className="w-full">
               <thead>

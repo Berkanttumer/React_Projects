@@ -23,7 +23,7 @@ const Details = () => {
 
   const { id } = useParams();
   const product = products.find((data) => data.id === Number(id));
-  const image = '/' + product.img.thumbs[0];
+  const image = product.img.thumbs[0];
   const [Selectimage, setSelectImage] = useState(image);
   const [selectColor, setSelectColor] = useState(null);
   const [selectSize, setSelectSize] = useState();
@@ -32,7 +32,7 @@ const Details = () => {
 
   useEffect(() => {
     const product = products.find((data) => data.id === Number(id));
-    const image = '/' + product.img.thumbs[0];
+    const image = product.img.thumbs[0];
     setSelectImage(image);
     setSelectColor(null);
     setSelectSize(undefined);
@@ -119,14 +119,14 @@ const Details = () => {
                         return (
                           <SwiperSlide key={id}>
                             <img
-                              src={'/' + data}
+                              src={data}
                               className={
-                                Selectimage === '/' + data
+                                Selectimage === data
                                   ? 'border-2 border-[#1d4ed8]'
                                   : ''
                               }
                               alt=""
-                              onClick={() => handleImage('/' + data)}
+                              onClick={() => handleImage(data)}
                             />
                           </SwiperSlide>
                         );

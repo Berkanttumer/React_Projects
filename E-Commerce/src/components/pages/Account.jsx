@@ -1,7 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { AuthContext } from '../../ContextAPI/AuthContext';
-import { Route } from 'react-router-dom';
+import { Route, useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { red } from '@mui/material/colors';
@@ -10,7 +10,9 @@ const Account = () => {
   const { signUp, logIn, updateProfile, logOut, user, signGitHub } =
     useContext(AuthContext);
 
+  const location = useLocation();
   const navigate = useNavigate();
+  const fromSignUp = location.state?.signUp;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,7 +40,14 @@ const Account = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  useEffect(() => {
+    if (fromSignUp) {
+      setSignIn(false);
+    }
+  }, [fromSignUp]);
+
   console.log(email, password);
+  console.log(location.state);
 
   return user ? (
     <section className="mt-12">

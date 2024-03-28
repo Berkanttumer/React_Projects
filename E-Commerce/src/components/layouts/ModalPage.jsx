@@ -50,6 +50,19 @@ const ModalPage = () => {
         display: none;
       }
     }
+    @media (max-width: 800px) {
+      width: 350px;
+      height: 450px;
+      top: 50%;
+      left: 50%;
+      .modal-wrapper {
+        display: flex;
+        flex-direction: column;
+      }
+      img {
+        display: none;
+      }
+    }
   `;
   return (
     localStorage.getItem('modalCheckbox') !== 'true' && (

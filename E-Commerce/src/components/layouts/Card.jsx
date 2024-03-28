@@ -8,6 +8,8 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { db } from '../../firebase';
 import { arrayUnion, doc, getDoc, updateDoc } from 'firebase/firestore';
 import { AuthContext } from '../../ContextAPI/AuthContext';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Card = ({ data }) => {
   const [favorite, setFavorite] = useState(false);
@@ -38,7 +40,7 @@ const Card = ({ data }) => {
         }),
       });
     } else {
-      alert('Please login to save product');
+      toast.error('Please login to add favorites');
     }
   };
 

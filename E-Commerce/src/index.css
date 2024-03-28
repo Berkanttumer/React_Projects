@@ -80,6 +80,22 @@ header ul li:hover {
 
 /* Mobile menu end */
 
+@media (max-width: 400px) {
+  .table-wrapper {
+  }
+  .table-wrap-deneme {
+    display: flex;
+    flex-direction: column;
+  }
+  .cart-totals {
+    width: unset;
+  }
+  .table-wrapper {
+    width: unset;
+    margin-bottom: 40px;
+  }
+}
+
 input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
   opacity: 1;

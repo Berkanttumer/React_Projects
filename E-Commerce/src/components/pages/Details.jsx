@@ -5,11 +5,21 @@ import { products } from '../../data';
 
 import 'swiper/css';
 import 'swiper/swiper-bundle.css';
-import { useParams } from 'react-router-dom';
-import profile from '../../../public/img/avatars/avatar1.jpg';
+import { NavLink, Navigate, useParams } from 'react-router-dom';
+import profile from '../../../public/img/avatars/avatar2.jpg';
 import Campaign from '../layouts/Campaign';
 import { ModalContext } from '../../ContextAPI/ModalProvider';
 import { AuthContext } from '../../ContextAPI/AuthContext';
+import {
+  arrayUnion,
+  doc,
+  onSnapshot,
+  serverTimestamp,
+  setDoc,
+  updateDoc,
+} from 'firebase/firestore';
+import { toast } from 'react-toastify';
+import { db } from '../../firebase';
 
 const Details = () => {
   const {
@@ -28,7 +38,6 @@ const Details = () => {
   const [selectColor, setSelectColor] = useState(null);
   const [selectSize, setSelectSize] = useState();
   const { user } = useContext(AuthContext);
-  console.log(user);
 
   useEffect(() => {
     const product = products.find((data) => data.id === Number(id));
@@ -69,6 +78,29 @@ const Details = () => {
       console.log(tabElement);
     }
   };
+
+  const [comment, setComment] = useState('');
+  const [review, setReview] = useState('');
+  const [productsReview, setProductsReview] = useState([]);
+  const productRef = doc(db, 'products', id);
+  useEffect(() => {
+    onSnapshot(productRef, (doc) => {
+      setProductsReview(doc.data()?.reviews);
+    });
+  }, [id]);
+
+  const handleSubmitComment = async () => {
+    await updateDoc(productRef, {
+      reviews: arrayUnion({
+        user: user?.email,
+        review: review,
+        date: new Date().toLocaleDateString(),
+      }),
+    });
+
+    setReview('');
+  };
+  console.log(review);
 
   return (
     <>
@@ -141,14 +173,7 @@ const Details = () => {
                 <h1 className="text-3xl font-bold">{product.title}</h1>
               </div>
               <div className=" flex items-center gap-5">
-                <div>
-                  <StarIcon sx={{ fontSize: 15, color: 'yellow' }} />
-                  <StarIcon sx={{ fontSize: 15, color: 'yellow' }} />
-                  <StarIcon sx={{ fontSize: 15, color: 'yellow' }} />
-                  <StarIcon sx={{ fontSize: 15, color: 'yellow' }} />
-                  <StarIcon sx={{ fontSize: 15, color: 'yellow' }} />
-                </div>
-                <div className="text-xs font-bold ">2 reviews</div>
+                <div className="text-xs font-bold "></div>
               </div>
               <div className="text-xl flex gap-5">
                 <span className="line-through text-gray-400">
@@ -370,195 +395,77 @@ const Details = () => {
                 {tab === 'reviews' && (
                   <div>
                     <h3 className="text-lg">
-                      2 reviews for Analogue Resin Strap
+                      {productsReview?.length > 0
+                        ? productsReview.length + ' ' + 'Reviews'
+                        : 'No Reviews'}
                     </h3>
-                    <ol className="mt-5 flex flex-col gap-8">
-                      <li>
-                        <div className="gap-5 flex">
-                          <div>
-                            <img
-                              src={profile}
-                              alt=""
-                              className="rounded-full"
-                            />
-                          </div>
-                          <div className="flex flex-col gap-1">
-                            <div>
-                              <StarIcon
-                                sx={{ fontSize: 15, color: 'yellow' }}
-                              />
-                              <StarIcon
-                                sx={{ fontSize: 15, color: 'yellow' }}
-                              />
-                              <StarIcon
-                                sx={{ fontSize: 15, color: 'yellow' }}
-                              />
-                              <StarIcon
-                                sx={{ fontSize: 15, color: 'yellow' }}
-                              />
-                              <StarIcon
-                                sx={{ fontSize: 15, color: 'yellow' }}
-                              />
+                    {productsReview?.map((data) => {
+                      return (
+                        <ol className="mt-5 flex flex-col gap-8">
+                          <li>
+                            <div className="gap-5 flex">
+                              <div>
+                                <img
+                                  src={profile}
+                                  alt=""
+                                  className="rounded-full"
+                                />
+                              </div>
+                              <div className="flex flex-col gap-1">
+                                <div className="flex gap-2">
+                                  <span className="font-bold">
+                                    {data.user.split('@')[0]}
+                                  </span>
+                                  <span>-</span>
+                                  <span className="opacity-30">
+                                    {data.date}
+                                  </span>
+                                </div>
+                                <div>
+                                  <p>{data.review}</p>
+                                </div>
+                              </div>
                             </div>
-                            <div className="flex gap-2">
-                              <span className="font-bold">admin</span>
-                              <span>-</span>
-                              <span className="opacity-30">April 23, 2022</span>
-                            </div>
-                            <div>
-                              <p>
-                                Sed perspiciatis unde omnis iste natus error sit
-                                voluptatem accusantium doloremque laudantium.
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div className="gap-5 flex">
-                          <div>
-                            <img
-                              src={profile}
-                              alt=""
-                              className="rounded-full"
-                            />
-                          </div>
-                          <div className="flex flex-col ">
-                            <div>
-                              <StarIcon
-                                sx={{ fontSize: 15, color: 'yellow' }}
-                              />
-                              <StarIcon
-                                sx={{ fontSize: 15, color: 'yellow' }}
-                              />
-                              <StarIcon
-                                sx={{ fontSize: 15, color: 'yellow' }}
-                              />
-                              <StarIcon
-                                sx={{ fontSize: 15, color: 'yellow' }}
-                              />
-                              <StarIcon
-                                sx={{ fontSize: 15, color: 'yellow' }}
-                              />
-                            </div>
-                            <div className="flex gap-2">
-                              <span className="font-bold">admin</span>
-                              <span>-</span>
-                              <span className="opacity-30">April 23, 2022</span>
-                            </div>
-                            <div>
-                              <p>
-                                Sed perspiciatis unde omnis iste natus error sit
-                                voluptatem accusantium doloremque laudantium.
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                    </ol>
+                          </li>
+                        </ol>
+                      );
+                    })}
+
                     <div className="add-comment mt-6">
                       <form className="flex flex-col gap-5">
                         <h2 className="text-xl border-b pb-4">Add a review</h2>
-                        <div className="">
-                          <span>
-                            Your rating <span className="text-red-600">*</span>
-                          </span>
-                          <div className="flex mt-2">
-                            <a className="star-icons border-r pr-2 mr-2">
-                              <StarIcon
-                                sx={{ fontSize: 15, color: 'gray' }}
-                                className="star-icon"
-                              />
-                            </a>
-                            <a className="star-icons border-r pr-2 mr-2 ">
-                              <StarIcon
-                                sx={{ fontSize: 15, color: 'gray' }}
-                                className="star-icon"
-                              />
-                              <StarIcon
-                                sx={{ fontSize: 15, color: 'gray' }}
-                                className="star-icon"
-                              />
-                            </a>
-                            <a className="star-icons border-r pr-2 mr-2 ">
-                              <StarIcon
-                                sx={{ fontSize: 15, color: 'gray' }}
-                                className="star-icon"
-                              />
-                              <StarIcon
-                                sx={{ fontSize: 15, color: 'gray' }}
-                                className="star-icon"
-                              />
-                              <StarIcon
-                                sx={{ fontSize: 15, color: 'gray' }}
-                                className="star-icon"
-                              />
-                            </a>
-                            <a className="star-icons border-r pr-2 mr-2 ">
-                              <StarIcon
-                                sx={{ fontSize: 15, color: 'gray' }}
-                                className="star-icon"
-                              />
-                              <StarIcon
-                                sx={{ fontSize: 15, color: 'gray' }}
-                                className="star-icon"
-                              />
-                              <StarIcon
-                                sx={{ fontSize: 15, color: 'gray' }}
-                                className="star-icon"
-                              />
-                              <StarIcon
-                                sx={{ fontSize: 15, color: 'gray' }}
-                                className="star-icon"
-                              />
-                            </a>
-                            <a className="star-icons  ">
-                              <StarIcon
-                                sx={{ fontSize: 15, color: 'gray' }}
-                                className="star-icon"
-                              />
-                              <StarIcon
-                                sx={{ fontSize: 15, color: 'gray' }}
-                                className="star-icon"
-                              />
-                              <StarIcon
-                                sx={{ fontSize: 15, color: 'gray' }}
-                                className="star-icon"
-                              />
-                              <StarIcon
-                                sx={{ fontSize: 15, color: 'gray' }}
-                                className="star-icon"
-                              />
-                              <StarIcon
-                                sx={{ fontSize: 15, color: 'gray' }}
-                                className="star-icon"
-                              />
-                            </a>
+                        {user && (
+                          <div className="flex flex-col">
+                            <span>
+                              Your review{' '}
+                              <span className="text-red-600">*</span>
+                            </span>
+                            <textarea
+                              cols="30"
+                              rows="10"
+                              className="mt-2 outline-none text-black p-2"
+                              onChange={(e) => setReview(e.target.value)}
+                            ></textarea>
                           </div>
-                        </div>
-                        <div className="flex flex-col">
-                          <span>
-                            Your review <span className="text-red-600">*</span>
-                          </span>
-                          <textarea
-                            cols="30"
-                            rows="10"
-                            className="mt-2 outline-none text-black p-2"
-                          ></textarea>
-                        </div>
+                        )}
                       </form>
                     </div>
                     {user ? (
                       <div className="mt-12">
-                        <button className="transition-btn bg-white text-black pt-2 pb-2 pl-6 pr-6 hover:bg-[#1d4ed8] hover:text-white ">
+                        <button
+                          className="transition-btn bg-white text-black pt-2 pb-2 pl-6 pr-6 hover:bg-[#1d4ed8] hover:text-white "
+                          onClick={handleSubmitComment}
+                        >
                           Add your Comment
                         </button>
                       </div>
                     ) : (
                       <div className="mt-12">
-                        <button className="transition-btn bg-white text-black pt-2 pb-2 pl-6 pr-6 hover:bg-[#1d4ed8] hover:text-white ">
-                          Sign up for comment
-                        </button>
+                        <NavLink to="/Account">
+                          <button className="transition-btn bg-white text-black pt-2 pb-2 pl-6 pr-6 hover:bg-[#1d4ed8] hover:text-white ">
+                            Sign up for comment
+                          </button>
+                        </NavLink>
                       </div>
                     )}
                   </div>
